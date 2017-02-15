@@ -11,7 +11,7 @@ export abstract class Timeline extends Breadcrumb {
    * @param {object} options
    * @param {object} position
    */
-  constructor(canvas: Canvas, options: any, position: any) {
+  constructor(protected canvas: Canvas, options: any = {}, position?: any) {
     super(canvas, options);
 
     if (position) {

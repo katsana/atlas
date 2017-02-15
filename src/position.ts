@@ -1,25 +1,11 @@
 export abstract class Position {
   /**
-   * The latitude.
-   *
-   * @type {number}
-   */
-  protected latitude: number;
-
-  /**
-   * The longitude.
-   *
-   * @type {number}
-   */
-  protected longitude: number;
-
-  /**
    * Construct a new class instance.
    *
    * @param {number} latitude
    * @param {number} longitude
    */
-  constructor(latitude: number, longitude: number) {
+  constructor(protected latitude: number, protected longitude: number) {
     this.latitude = latitude
     this.longitude = longitude
   }

@@ -15,7 +15,7 @@ export abstract class Canvas {
    * @param {string} id
    * @param {object} options
    */
-  constructor(id: string, options: any) {
+  constructor(id: string, options: any = {}) {
     this.resolver = null;
     this.boot(id, options);
   }

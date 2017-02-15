@@ -7,7 +7,7 @@ export abstract class Routing extends Breadcrumb {
    *
    * @type {string}
    */
-  protected routing: string;
+  protected routing: string = 'follow';
 
   /**
    * Get routing mode.

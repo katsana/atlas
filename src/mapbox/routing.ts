@@ -5,17 +5,6 @@ import L from 'mapbox'
 
 export class Routing extends Breadcrumb {
   /**
-   * Construct a new class.
-   *
-   * @param {Canvas} canvas
-   * @param {object} options
-   */
-  constructor(canvas: Canvas, options: any) {
-    super(canvas, options);
-    this.routing = 'follow'
-  }
-
-  /**
    * Add new position.
    *
    * @param {Position} position

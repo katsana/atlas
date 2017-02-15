@@ -3,18 +3,11 @@ import { Position } from './position'
 
 export abstract class Breadcrumb {
   /**
-   * The canvas.
-   *
-   * @type {Canvas}
-   */
-  protected canvas: Canvas;
-
-  /**
    * The position.
    *
-   * @type {Position}
+   * @type {Position|Array}
    */
-  protected position?: Position;
+  protected position;
 
   /**
    * The service polyline.
@@ -28,10 +21,8 @@ export abstract class Breadcrumb {
    *
    * @param {Canvas}   canvas
    * @param {object}   options
-   * @param {Position} position
    */
-  constructor(canvas: Canvas, options: any) {
-    this.canvas = canvas;
+  constructor(protected canvas: Canvas, options: any = {}) {
     this.polyline = this.makePolyline(options);
   }
 
