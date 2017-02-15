@@ -1,53 +1,54 @@
-import { Listener } from './listener'
-import { Overwatch } from '../overwatch'
+import { Request } from './request'
+import { Resolver } from './resolver'
 
-class Request extends Listener {
+class SseRequest extends Request {
   /**
    * Dispatch request.
    *
-   * @param {any} beacons
+   * @param {any} vehicles
    */
-  dispatch(beacons?: any): void {
+  dispatch(vehicles?: any): void {
     this.request.addEventListener('message', e => {
-      let response = $.parseJSON(e.data)
+      let response = $.parseJSON(e.data);
 
       if (response.status == 200)
-        this.locate(response.data)
+        this.locate(response.data);
 
-      this.update(response.status)
-    })
+      this.update(response.status);
+    });
   }
 
   /**
    * Send request.
    */
   send() {
-    this.update(304)
+    this.update(304);
   }
 
   /**
    * Set request endpoint.
    *
-   * @param  {string} url
+   * @param  {options} options
    * @return {this}
    */
-  to(url: string): this {
-    this.request = new window.EventSource(`${url}/event`);
+  to(options: any = {}): this {
+    this.request = new window.EventSource(`${options.url}/event`);
 
     return this;
   }
 }
 
-export class Sse {
+export class Sse extends Resolver {
   /**
    * Make SSE request.
    *
-   * @param {Overwatch} container
-   * @param {string}    url
+   * @param {object} container
+   * @param {object} options
+   * @return {Request}
    */
-   make(container: Overwatch, url: string) {
-    let request = new Request(container);
+  make(container: any, options: any = {}) {
+    let request = new SseRequest(container);
 
-    return request.to(url);
+    return request.to(options);
   }
 }

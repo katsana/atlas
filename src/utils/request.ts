@@ -1,6 +1,6 @@
 import { Overwatch } from '../overwatch'
 
-export abstract class Listener {
+export abstract class Request {
   /**
    * Request interval.
    *
@@ -27,7 +27,7 @@ export abstract class Listener {
    *
    * @param {Overwatch} container
    */
-  constructor(protected container: Overwatch) {
+  constructor(protected container) {
     this.request = null;
   }
 

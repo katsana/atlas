@@ -1,7 +1,7 @@
-import { Listener } from './listener'
-import { Overwatch } from '../overwatch'
+import { Request } from './request'
+import { Resolver } from './resolver'
 
-class Request extends Listener {
+class AjaxRequest extends Request {
   /**
    * Request interval.
    *
@@ -35,27 +35,28 @@ class Request extends Listener {
   /**
    * Set request endpoint.
    *
-   * @param  {string} url
+   * @param  {object} options
    * @return {this}
    */
-  to(url: string): this {
+  to(options: any = {}): this {
     this.request = Javie.make('request', 'katsana.beacon');
-    this.request.to(`GET ${url}/native`);
+    this.request.to(`GET ${options.url}/native`);
 
     return this;
   }
 }
 
-export class Ajax {
+export class Ajax extends Resolver {
   /**
    * Make AJAX request.
    *
-   * @param {Overwatch} container
-   * @param {string}    url
+   * @param {object} container
+   * @param {object} options
+   * @return {Request}
    */
-   make(container: Overwatch, url: string) {
-    let request = new Request(container);
+  make(container: any, options: any = {}) {
+    let request = new AjaxRequest(container);
 
-    return request.to(url);
+    return request.to(options);
   }
 }

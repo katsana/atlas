@@ -1,8 +1,8 @@
-import { Listener } from './listener'
-import { Overwatch } from '../overwatch'
+import { Request } from './request'
+import { Resolver } from './resolver'
 import io from 'socket.io-client'
 
-class Request extends Listener {
+class WebsocketRequest extends Request {
   /**
    * JWT token.
    *
@@ -13,13 +13,13 @@ class Request extends Listener {
   /**
    * Dispatch request.
    *
-   * @param {any} beacons
+   * @param {any} vehicles
    */
-  dispatch(beacons?: any): void {
+  dispatch(vehicles?: any): void {
     this.request.on('connect', () => {
       this.request.on('authenticated', () => {
-        for (const beacon of beacons) {
-          this.request.on('track:' + beacon.imei, response => {
+        for (const vehicle of vehicles) {
+          this.request.on('track:' + vehicle.imei, response => {
             if (response.status == 200)
               this.locate(response.data)
 
@@ -44,26 +44,26 @@ class Request extends Listener {
    * @param  {string} url
    * @return {this}
    */
-  to(url: string): this {
-    let vue = this.container.vue;
-
-    this.token = vue.token;
-    this.request = io(`${location.protocol}//${location.hostname}:${vue.config.websocketPort}`);
+  to(options: any = {}): this {
+    this.token = options.token;
+    this.request = io(`${options.websocket}`);
+    // `${location.protocol}//${location.hostname}:${vue.config.websocketPort}`
 
     return this;
   }
 }
 
-export class Websocket {
+export class Websocket extends Resolver {
   /**
    * Make websocket request.
    *
-   * @param {Overwatch} container
-   * @param {string}    url
+   * @param {object} container
+   * @param {object} options
+   * @return {Request}
    */
-  make(container: Overwatch, url: string) {
-    let request = new Request(container);
+  make(container: any, options: any = {}) {
+    let request = new WebsocketRequest(container);
 
-    return request.to(url);
+    return request.to(options);
   }
 }
