@@ -1283,7 +1283,7 @@ make-error@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.2.1.tgz#9a6dfb4844423b9f145806728d05c6e935670e75"
 
-mapbox:
+mapbox@^1.0.0-beta6:
   version "1.0.0-beta6"
   resolved "https://registry.yarnpkg.com/mapbox/-/mapbox-1.0.0-beta6.tgz#be3af63702913108480b67dc19534ac88944889b"
   dependencies:
