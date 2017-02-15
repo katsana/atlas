@@ -12,11 +12,11 @@ class Atlas {
     }
   }
 
-  registerGoogleService(options: any): GoogleService {
+  private registerGoogleService(options: any): GoogleService {
     return new GoogleService(options);
   }
 
-  registerMapboxService(options: any): MapboxService {
+  private registerMapboxService(options: any): MapboxService {
     return new MapboxService(options);
   }
 }
