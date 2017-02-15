@@ -34,7 +34,7 @@ export class Routing extends Breadcrumb {
    * @param  {object}  options
    * @return {object}
    */
-  makePolyline(options: any): any {
+  make(options: any): any {
     return L.polyline([], options);
   }
 

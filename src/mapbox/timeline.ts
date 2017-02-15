@@ -44,7 +44,7 @@ export class Timeline extends Breadcrumb {
    * @param  {object}  options
    * @return {this}
    */
-  makePolyline(options: any): any {
+  make(options: any): any {
     return L.polyline([], options);
   }
 

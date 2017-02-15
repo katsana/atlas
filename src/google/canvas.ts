@@ -4,12 +4,12 @@ import _ from 'lodash'
 
 export class Canvas extends Map {
   /**
-   * Boot the map instance.
+   * Make the map instance.
    *
    * @param {string} id
    * @param {object} options
    */
-  boot(id: string, options: any): void {
+  make(id: string, options: any): void {
     let config = {
       zoom: options.zoom ? options.zoom : 7,
       center: {lat: -34.397, lng: 150.644},

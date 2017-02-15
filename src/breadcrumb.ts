@@ -23,7 +23,7 @@ export abstract class Breadcrumb {
    * @param {object}   options
    */
   constructor(protected canvas: Canvas, options: any = {}) {
-    this.polyline = this.makePolyline(options);
+    this.polyline = this.make(options);
   }
 
   /**
@@ -62,7 +62,7 @@ export abstract class Breadcrumb {
    * @param  {object}  options
    * @return {this}
    */
-  abstract makePolyline(options: any): this;
+  abstract make(options: any): this;
 
   /**
    * Remove polyline from canvas.

@@ -17,7 +17,7 @@ export abstract class Canvas {
    */
   constructor(id: string, options: any = {}) {
     this.resolver = null;
-    this.boot(id, options);
+    this.make(id, options);
   }
 
   /**
@@ -65,12 +65,12 @@ export abstract class Canvas {
   }
 
   /**
-   * Boot the map instance.
+   * Make the map instance.
    *
    * @param {string} id
    * @param {any}    options
    */
-  abstract boot(id: string, options: any): void;
+  abstract make(id: string, options: any): void;
 
   /**
    * Bound map to.
