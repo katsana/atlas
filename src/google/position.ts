@@ -7,7 +7,7 @@ export class Position extends Coordinate {
    * @return {any}
    */
   get position(): any {
-    return {lat: this.latitude, lng: this.longitude}
+    return {lat: this.latitude, lng: this.longitude};
   }
 
   /**

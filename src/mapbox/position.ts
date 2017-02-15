@@ -7,7 +7,7 @@ export class Position extends Base {
    * @return {any}
    */
   get position(): any {
-    return new L.latLng(this.latitude, this.longitude)
+    return new L.latLng(this.latitude, this.longitude);
   }
 
   /**
@@ -16,6 +16,6 @@ export class Position extends Base {
    * @return {string}
    */
   get serviceCoordinate(): string {
-    return `${this.longitude},${this.latitude}`
+    return `${this.longitude},${this.latitude}`;
   }
 }

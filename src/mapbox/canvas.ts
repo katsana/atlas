@@ -17,9 +17,9 @@ export class Canvas extends Map {
       trackResize: true,
       zoomControl: false,
       attributionControl: false
-    }
+    };
 
-    this.resolver = new L.map(id, _.extend(config, options))
+    this.resolver = new L.map(id, _.extend(config, options));
   }
 
   /**
@@ -29,10 +29,10 @@ export class Canvas extends Map {
    * @return {this}
    */
   boundTo(bounds: any): this {
-    return this.pipe((map) => {
-      map.fitBounds(bounds)
-      map.setZoom(Math.min(map.getBoundsZoom(bounds), 16))
-    })
+    return this.pipe(function(map) {
+      map.fitBounds(bounds);
+      map.setZoom(Math.min(map.getBoundsZoom(bounds), 16));
+    });
   }
 
   /**
@@ -43,14 +43,14 @@ export class Canvas extends Map {
    * @return {this}
    */
   centerTo(position: Position, zoom?: number): this {
-    return this.pipe((map) => {
+    return this.pipe(function(map) {
       if (zoom == null)
-        zoom = map.getZoom() ? map.getZoom() : 9
+        zoom = map.getZoom() ? map.getZoom() : 9;
       if (zoom < 10)
-        zoom = 16
+        zoom = 16;
 
-      map.setCenter(Position.via(position))
-    })
+      map.setCenter(Position.via(position));
+    });
   }
 
   /**
@@ -60,8 +60,8 @@ export class Canvas extends Map {
    * @return {this}
    */
   panTo(position: Position): this {
-    return this.pipe((map) => {
-      map.panTo(Position.via(position))
-    })
+    return this.pipe(function(map) {
+      map.panTo(Position.via(position));
+    });
   }
 }

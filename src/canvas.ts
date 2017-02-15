@@ -70,7 +70,7 @@ export abstract class Canvas {
    * @param {string} id
    * @param {any}    options
    */
-  abstract boot(id: string, options: any) : void;
+  abstract boot(id: string, options: any): void;
 
   /**
    * Bound map to.

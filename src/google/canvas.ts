@@ -14,9 +14,9 @@ export class Canvas extends Map {
       zoom: options.zoom ? options.zoom : 7,
       center: {lat: -34.397, lng: 150.644},
       mapTypeId: 'satellite'
-    }
+    };
 
-    this.resolver = new google.maps.Map(document.getElementById(id), _.extend(config, options))
+    this.resolver = new google.maps.Map(document.getElementById(id), _.extend(config, options));
   }
 
   /**
@@ -26,9 +26,9 @@ export class Canvas extends Map {
    * @return {this}
    */
   boundTo(bounds: any): this {
-    return this.pipe((map) => {
-      map.fitBounds(bounds)
-    })
+    return this.pipe(function(map) {
+      map.fitBounds(bounds);
+    });
   }
 
   /**
@@ -39,9 +39,9 @@ export class Canvas extends Map {
    * @return {this}
    */
   centerTo(position: Position, zoom?: number): this {
-    return this.pipe(function (map) {
-      map.setCenter(Position.via(position))
-    })
+    return this.pipe(function(map) {
+      map.setCenter(Position.via(position));
+    });
   }
 
   /**
@@ -52,7 +52,7 @@ export class Canvas extends Map {
    */
   panTo(position: Position): this {
     return this.pipe(function(map) {
-      map.panTo(Position.via(position))
-    })
+      map.panTo(Position.via(position));
+    });
   }
 }

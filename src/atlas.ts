@@ -7,6 +7,8 @@ class Atlas {
   constructor(service: string, options: any) {
     if (service == 'google') {
       this.service = this.registerGoogleService(options);
+    } else if (service == 'mapbox') {
+      this.service = this.registerMapboxService(options);
     }
   }
 
