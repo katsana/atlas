@@ -78,10 +78,10 @@ export abstract class Position {
   /**
    * Resolve instance of position.
    *
-   * @param  {any} position
-   * @return {any}
+   * @param  {object} position
+   * @return {object}
    */
-  static via(position: any): any {
+  static via(position: any) {
     if (position instanceof Position)
       return position.get()
 
@@ -91,7 +91,7 @@ export abstract class Position {
   /**
    * Get the position.
    *
-   * @return {any}
+   * @return {object}
    */
   abstract get position(): any;
 

@@ -7,7 +7,7 @@ export class Canvas extends Map {
    * Boot the map instance.
    *
    * @param {string} id
-   * @param {any}    options
+   * @param {object} options
    */
   boot(id: string, options: any): void {
     let config = {
@@ -22,7 +22,7 @@ export class Canvas extends Map {
   /**
    * Bound map to.
    *
-   * @param {any} bounds
+   * @param {object} bounds
    * @return {this}
    */
   boundTo(bounds: any): this {

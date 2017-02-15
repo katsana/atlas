@@ -7,14 +7,14 @@ export class MapboxService implements Service {
   /**
    * Service options.
    *
-   * @type {any}
+   * @type {object}
    */
   protected options: any;
 
   /**
    * Construct a new class.
    *
-   * @param {any} options
+   * @param {object} options
    */
   constructor(options: any) {
     this.options = options;
@@ -24,7 +24,7 @@ export class MapboxService implements Service {
    * Construct a new canvas.
    *
    * @param  {string} id
-   * @param  {any}    options
+   * @param  {object} options
    * @return {Canvas}
    */
   newCanvas(id: string, options: any): Canvas {

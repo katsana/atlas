@@ -54,10 +54,10 @@ export abstract class Canvas {
   /**
    * Resolve instance of canvas.
    *
-   * @param  {any} canvas
-   * @return {any}
+   * @param  {object} canvas
+   * @return {object}
    */
-  static via(canvas: any): any {
+  static via(canvas: any) {
     if (canvas instanceof Canvas)
       return canvas.get();
 
@@ -75,7 +75,7 @@ export abstract class Canvas {
   /**
    * Bound map to.
    *
-   * @param {any} bounds
+   * @param {object} bounds
    * @return {this}
    */
   abstract boundTo(bounds: any): this;

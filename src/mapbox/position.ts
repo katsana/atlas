@@ -1,10 +1,11 @@
 import { Position as Base } from '../position'
+import L from 'mapbox'
 
 export class Position extends Base {
   /**
    * Get the position.
    *
-   * @return {any}
+   * @return {object}
    */
   get position(): any {
     return new L.latLng(this.latitude, this.longitude);

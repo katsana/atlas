@@ -6,7 +6,7 @@ export interface Service {
    * Construct a new canvas.
    *
    * @param  {string} id
-   * @param  {any}    options
+   * @param  {object} options
    * @return {Canvas}
    */
   newCanvas(id: string, options: any): Canvas;
