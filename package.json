@@ -1,0 +1,26 @@
+{
+  "name": "katsana-maps",
+  "version": "1.0.0",
+  "author": "KATSANA Developers",
+  "description": "Agnostic Map Services for KATSANA",
+  "homepage": "https://github.com/katsana",
+  "main": "dist/atlas.js",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "mapbox": "^1.0.0-beta6"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "rollup": "^0.31.0",
+    "rollup-plugin-babel": "^2.4.0",
+    "rollup-plugin-typescript": "^0.7.5",
+    "typings": "^1.0.4"
+  },
+  "scripts": {
+    "compile": "./node_modules/.bin/rollup -c",
+    "prepublish": "npm run compile"
+  }
+}
