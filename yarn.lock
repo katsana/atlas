@@ -1204,6 +1204,17 @@ isobject@^2.1.0:
   dependencies:
     isarray "1.0.0"
 
+javie:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/javie/-/javie-2.1.1.tgz#8011fc55056dd9864ca735259a5a923fe953d453"
+  dependencies:
+    jquery "^2.1.4"
+    underscore "^1.5.0"
+
+jquery@^2.1.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
+
 js-tokens@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.1.tgz#08e9f132484a2c45a30907e9dc4d5567b7f114d7"
@@ -1877,6 +1888,10 @@ ultron@1.0.x:
 unc-path-regex@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/unc-path-regex/-/unc-path-regex-0.1.2.tgz#e73dd3d7b0d7c5ed86fbac6b0ae7d8c6a69d50fa"
+
+underscore@^1.5.0:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
 unzip-response@^1.0.2:
   version "1.0.2"

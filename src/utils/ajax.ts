@@ -1,5 +1,6 @@
 import { Request } from './request'
 import { Resolver } from './resolver'
+import Javie from 'javie'
 
 class AjaxRequest extends Request {
   /**
