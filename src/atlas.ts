@@ -1,5 +1,6 @@
 import { GoogleService } from './google/service'
 import { MapboxService } from './mapbox/service'
+import { Position } from './generic/position'
 import { Service } from './service'
 
 let config = {
@@ -35,6 +36,17 @@ class Atlas {
    */
   driver(): Service {
     return this.service;
+  }
+
+  /**
+   * Create new position.
+   *
+   * @param  {number}   latitude
+   * @param  {number}   longitude
+   * @return {Position}
+   */
+  newPosition(latitude: number, longitude: number): Position {
+    return new Positin(latitude, longitude);
   }
 
   /**
