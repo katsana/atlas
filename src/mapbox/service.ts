@@ -1,9 +1,28 @@
 import { Canvas } from './canvas'
 import { Position } from './position'
 import { Service } from '../service'
-import L from 'mapbox'
+import { Theme } from './theme'
+import L from 'mapbox.js'
 
 export class MapboxService extends Service {
+  /**
+   * Theme instance.
+   *
+   * @type {Theme}
+   */
+  protected theme: Theme;
+
+  /**
+   * Construct a new class.
+   *
+   * @param {object} options
+   */
+  constructor(options: any) {
+    super(options);
+
+    this.theme = new Theme();
+  }
+
   /**
    * Access token.
    *
@@ -21,7 +40,8 @@ export class MapboxService extends Service {
    * @return {Canvas}
    */
   newCanvas(id: string, options: any): Canvas {
-    return new Canvas(id, options);
+    return (new Canvas(id, options))
+              .addTheme(this.theme);
   }
 
   /**
@@ -32,6 +52,7 @@ export class MapboxService extends Service {
    * @return {Position}
    */
   newPosition(latitude: number, longitude: number): Position {
-    return new Position(latitude, longitude);
+    return (new Position(latitude, longitude))
+              .theme(this.theme);
   }
 }

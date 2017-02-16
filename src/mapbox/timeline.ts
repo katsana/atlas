@@ -1,7 +1,7 @@
 import { Canvas } from './canvas'
 import { Position } from './position'
 import { Timeline as Breadcrumb } from '../timeline'
-import L from 'mapbox'
+import L from 'mapbox.js'
 
 export class Timeline extends Breadcrumb {
   /**
