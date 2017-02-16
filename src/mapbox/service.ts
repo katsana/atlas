@@ -3,14 +3,14 @@ import { Position } from './position'
 import { Service } from '../service'
 import L from 'mapbox'
 
-export class MapboxService implements Service {
+export class MapboxService extends Service {
   /**
    * Access token.
    *
    * @return {string}
    */
-  static accessToken(): string {
-    return MapboxService.options.accessToken;
+  accessToken(): string {
+    return this.options.accessToken;
   }
 
   /**

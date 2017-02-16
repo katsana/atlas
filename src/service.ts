@@ -7,7 +7,7 @@ export abstract class Service {
    *
    * @type {object}
    */
-  static options = {};
+  protected options: any;
 
   /**
    * Construct a new class.
@@ -15,7 +15,7 @@ export abstract class Service {
    * @param {object} options
    */
   constructor(options: any = {}) {
-    Service.options = options;
+    this.options = options;
   }
 
   /**

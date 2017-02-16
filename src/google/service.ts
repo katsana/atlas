@@ -2,15 +2,16 @@ import { Canvas } from './canvas'
 import { Position } from './position'
 import { Service } from '../service'
 
-export class GoogleService implements Service {
+export class GoogleService extends Service {
   /**
    * Access token.
    *
    * @return {string}
    */
-  static accessToken(): string {
-    return GoogleService.options.apiKey;
+  accessToken(): string {
+    return this.options.apiKey;
   }
+
   /**
    * Construct a new canvas.
    *
