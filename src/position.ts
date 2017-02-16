@@ -75,6 +75,15 @@ export abstract class Position {
   }
 
   /**
+   * Get the static map image for position.
+   *
+   * @param  {string} dimension
+   * @param  {number} zoom
+   * @return {string}
+   */
+  abstract image(dimension: string, zoom: number): string;
+
+  /**
    * Get the position.
    *
    * @return {object}
