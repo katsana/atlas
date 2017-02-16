@@ -28,6 +28,16 @@ export abstract class Timeline extends Breadcrumb {
   /**
    * Center to current position.
    *
+   * @param  {Position} position
+   * @return {this}
+   */
+  centerTo(position: Position): this {
+    return this;
+  }
+
+  /**
+   * Center to current position.
+   *
    * @return {this}
    */
   abstract boundTo(): this;

@@ -1,4 +1,5 @@
 import { Position as Base } from '../position'
+import { MapboxService } from './service'
 import L from 'mapbox'
 
 export class Position extends Base {
@@ -10,7 +11,7 @@ export class Position extends Base {
    * @return {string}
    */
   image(dimension: string, zoom: number): string {
-    return `https://api.mapbox.com/v4/Satellite/pin-l-car+f44(${this.serviceCoordinate},${zoom})/${this.serviceCoordinate},${zoom}/${dimension}.png?access_token=${L.mapbox.accessToken}`;
+    return `https://api.mapbox.com/v4/Satellite/pin-l-car+f44(${this.serviceCoordinate},${zoom})/${this.serviceCoordinate},${zoom}/${dimension}.png?access_token=${MapboxService.accessToken()}`;
   }
 
   /**

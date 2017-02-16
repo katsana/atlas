@@ -5,6 +5,15 @@ import L from 'mapbox'
 
 export class MapboxService implements Service {
   /**
+   * Access token.
+   *
+   * @return {string}
+   */
+  static accessToken(): string {
+    return MapboxService.options.accessToken;
+  }
+
+  /**
    * Construct a new canvas.
    *
    * @param  {string} id

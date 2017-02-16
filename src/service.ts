@@ -3,12 +3,19 @@ import { Position } from './position'
 
 export abstract class Service {
   /**
+   * Service options.
+   *
+   * @type {object}
+   */
+  static options = {};
+
+  /**
    * Construct a new class.
    *
    * @param {object} options
    */
-  constructor(protected options: any = {}) {
-    //
+  constructor(options: any = {}) {
+    Service.options = options;
   }
 
   /**

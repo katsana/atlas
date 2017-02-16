@@ -4,6 +4,14 @@ import { Service } from '../service'
 
 export class GoogleService implements Service {
   /**
+   * Access token.
+   *
+   * @return {string}
+   */
+  static accessToken(): string {
+    return GoogleService.options.apiKey;
+  }
+  /**
    * Construct a new canvas.
    *
    * @param  {string} id

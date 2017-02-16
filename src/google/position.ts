@@ -9,7 +9,7 @@ export class Position extends Coordinate {
    * @return {string}
    */
   image(dimension: string, zoom: number): string {
-    return ``;
+    return `https://maps.googleapis.com/maps/api/staticmap?center=${this.serviceCoordinate}&zoom=${zoom}&size=${dimension}&markers=color:red%7Csize:mid%7C${this.serviceCoordinate}&key=${GoogleService.accessToken()}`;
   }
 
   /**
