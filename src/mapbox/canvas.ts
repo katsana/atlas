@@ -1,7 +1,7 @@
 import { Canvas as Map } from '../canvas'
 import { Position } from './position'
 import { Theme } from './theme'
-import L from 'mapbox.js'
+import L from 'mapbox'
 import _ from 'lodash'
 
 export class Canvas extends Map {

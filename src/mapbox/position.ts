@@ -1,17 +1,8 @@
-import { Position as Base } from '../position'
-import { MapboxService } from './service'
+import { Position as BasePosition } from '../position'
 import { Theme } from './theme'
-import L from 'mapbox.js'
+import L from 'mapbox'
 
-export class Position extends Base {
-  protected _theme: Theme;
-
-  theme(theme: Theme): this {
-    this._theme = theme;
-
-    return this;
-  }
-
+export class Position extends BasePosition {
   /**
    * Get the static map image for position.
    *
@@ -20,7 +11,7 @@ export class Position extends Base {
    * @return {string}
    */
   image(dimension: string, zoom: number): string {
-    return `https://api.mapbox.com/v4/{this._theme.current}/pin-l-car+f44(${this.serviceCoordinate},${zoom})/${this.serviceCoordinate},${zoom}/${dimension}.png?access_token=${MapboxService.accessToken()}`;
+    return `https://api.mapbox.com/v4/{this.options.theme}/pin-l-car+f44(${this.serviceCoordinate},${zoom})/${this.serviceCoordinate},${zoom}/${dimension}.png?access_token=${this.options.accessToken}`;
   }
 
   /**

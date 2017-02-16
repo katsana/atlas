@@ -2,7 +2,7 @@ import { Canvas } from './canvas'
 import { Position } from './position'
 import { Service } from '../service'
 import { Theme } from './theme'
-import L from 'mapbox.js'
+import L from 'mapbox'
 
 export class Mapbox extends Service {
   /**
@@ -52,7 +52,6 @@ export class Mapbox extends Service {
    * @return {Position}
    */
   newPosition(latitude: number, longitude: number): Position {
-    return (new Position(latitude, longitude))
-              .theme(this.theme);
+    return new Position(latitude, longitude, {accessToken: this.accessToken(), theme: this.theme.current});
   }
 }

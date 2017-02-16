@@ -2,6 +2,7 @@ import { Google } from './google/service'
 import { Mapbox } from './mapbox/service'
 import { Position } from './generic/position'
 import { Service } from './service'
+import _ from 'lodash'
 
 let config = {
   google: {},
@@ -23,9 +24,9 @@ class Atlas {
    */
   constructor(service: string) {
     if (service == 'google') {
-      this.service = this.registerGoogle();
+      this.service = this.registerGoogleService();
     } else if (service == 'mapbox') {
-      this.service = this.registerMapbox();
+      this.service = this.registerMapboxService();
     }
   }
 
@@ -46,7 +47,7 @@ class Atlas {
    * @return {Position}
    */
   newPosition(latitude: number, longitude: number): Position {
-    return new Positin(latitude, longitude);
+    return new Position(latitude, longitude);
   }
 
   /**
@@ -63,7 +64,7 @@ class Atlas {
    *
    * @return {Mapbox}
    */
-  private registerMapbox(): Mapbox {
+  private registerMapboxService(): Mapbox {
     return new Mapbox(config.mapbox);
   }
 

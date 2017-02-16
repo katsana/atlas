@@ -1,7 +1,7 @@
 /**
  * Convert to radian.
- * @param  {number} value [description]
- * @return {number}       [description]
+ * @param  {number} value
+ * @return {number}
  */
 function to_radian(value: number): number {
   return value * (Math.PI / 180);
@@ -13,10 +13,10 @@ export abstract class Position {
    *
    * @param {number} latitude
    * @param {number} longitude
+   * @param {object} options
    */
-  constructor(protected latitude: number, protected longitude: number) {
-    this.latitude = latitude;
-    this.longitude = longitude;
+  constructor(protected latitude: number, protected longitude: number, protected options: any = {}) {
+    //
   }
 
   /**

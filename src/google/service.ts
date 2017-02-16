@@ -31,6 +31,6 @@ export class Google extends Service {
    * @return {Position}
    */
   newPosition(latitude: number, longitude: number): Position {
-    return new Position(latitude, longitude);
+    return new Position(latitude, longitude, {accessToken: this.accessToken()});
   }
 }
