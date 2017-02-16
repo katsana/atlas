@@ -16,7 +16,7 @@ export class Canvas extends Map {
       mapTypeId: 'satellite'
     };
 
-    this.resolver = new google.maps.Map(document.getElementById(id), _.extend(config, options));
+    return new google.maps.Map(document.getElementById(id), _.extend(config, options));
   }
 
   /**

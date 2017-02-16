@@ -19,7 +19,7 @@ export class Canvas extends Map {
       attributionControl: false
     };
 
-    this.resolver = new L.map(id, _.extend(config, options));
+    return new L.map(id, _.extend(config, options));
   }
 
   /**

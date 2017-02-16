@@ -3,11 +3,11 @@ import { Position } from './position'
 
 export abstract class Canvas {
   /**
-   * The map resolver.
+   * The map instance.
    *
    * @type {object}
    */
-  protected resolver: any;
+  protected instance: any;
 
   /**
    * Construct a new class instance.
@@ -16,8 +16,7 @@ export abstract class Canvas {
    * @param {object} options
    */
   constructor(id: string, options: any = {}) {
-    this.resolver = null;
-    this.make(id, options);
+    this.instance = this.make(id, options);
   }
 
   /**
@@ -26,7 +25,7 @@ export abstract class Canvas {
    * @return {object}
    */
   get(): any {
-    return this.resolver;
+    return this.instance;
   }
 
   /**
@@ -48,7 +47,7 @@ export abstract class Canvas {
    * @return {this}
    */
   tap(callback) {
-    return callback(this.resolver);
+    return callback(this.instance);
   }
 
   /**
