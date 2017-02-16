@@ -6,6 +6,13 @@ export abstract class Icon {
   /**
    * The icon instance.
    *
+   * @type {any}
+   */
+  protected icon: any;
+
+  /**
+   * The icon instance.
+   *
    * @type {Marker}
    */
   protected instance: Marker;
@@ -44,6 +51,25 @@ export abstract class Icon {
     return this.instance
   }
 
+  /**
+   * Generate the marker.
+   *
+   * @param  {Position} position
+   * @param  {any}      options
+   * @return {this}
+   */
+  generate(position: Position, options: any): this {
+    this.instance = this.make(position, this.icon, options);
+
+    return this;
+  }
+
+  /**
+   * Move icon to position.
+   *
+   * @param  {Position} position
+   * @return {this}
+   */
   moveTo(position: Position): this {
     this.instance.moveTo(position);
 
