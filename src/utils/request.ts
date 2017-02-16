@@ -71,8 +71,8 @@ export abstract class Request {
   /**
    * Set request endpoint.
    *
-   * @param  {string} url
+   * @param  {object} options
    * @return {this}
    */
-  abstract to(url: string): this;
+  abstract to(options: any): this;
 }

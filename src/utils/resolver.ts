@@ -8,5 +8,5 @@ export abstract class Resolver {
    * @param {object} options
    * @return {Request}
    */
-   abstract make(container: any, options: any = {}): Request;
+   abstract make(container: any, options: any): Request;
 }
