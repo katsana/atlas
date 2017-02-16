@@ -20,10 +20,11 @@ export class Canvas extends Map {
       attributionControl: false
     };
 
-    return new L.map(id, _.extend(config, options));
+    return new L.map(id, config);
   }
 
-  addTheme(theme: Theme): this {
+
+  theme(theme: Theme): this {
     let styleControl = L.control.layers(theme.asTiles());
     let zoomControl = new L.control.zoom();
     let tile = theme.activeTile();
