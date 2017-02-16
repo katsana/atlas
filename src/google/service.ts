@@ -2,7 +2,7 @@ import { Canvas } from './canvas'
 import { Position } from './position'
 import { Service } from '../service'
 
-export class GoogleService extends Service {
+export class Google extends Service {
   /**
    * Access token.
    *

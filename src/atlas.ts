@@ -1,5 +1,5 @@
-import { GoogleService } from './google/service'
-import { MapboxService } from './mapbox/service'
+import { Google } from './google/service'
+import { Mapbox } from './mapbox/service'
 import { Position } from './generic/position'
 import { Service } from './service'
 
@@ -23,9 +23,9 @@ class Atlas {
    */
   constructor(service: string) {
     if (service == 'google') {
-      this.service = this.registerGoogleService();
+      this.service = this.registerGoogle();
     } else if (service == 'mapbox') {
-      this.service = this.registerMapboxService();
+      this.service = this.registerMapbox();
     }
   }
 
@@ -52,19 +52,19 @@ class Atlas {
   /**
    * Register google service.
    *
-   * @return {MapboxService}
+   * @return {Google}
    */
-  private registerGoogleService(): GoogleService {
-    return new GoogleService(config.google);
+  private registerGoogleService(): Google {
+    return new Google(config.google);
   }
 
   /**
    * Register mapbox service.
    *
-   * @return {MapboxService}
+   * @return {Mapbox}
    */
-  private registerMapboxService(): MapboxService {
-    return new MapboxService(config.mapbox);
+  private registerMapbox(): Mapbox {
+    return new Mapbox(config.mapbox);
   }
 
   /**

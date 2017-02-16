@@ -4,7 +4,7 @@ import { Service } from '../service'
 import { Theme } from './theme'
 import L from 'mapbox.js'
 
-export class MapboxService extends Service {
+export class Mapbox extends Service {
   /**
    * Theme instance.
    *
