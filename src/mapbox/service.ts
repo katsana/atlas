@@ -2,7 +2,7 @@ import { Canvas } from './canvas'
 import { Position } from './position'
 import { Service } from '../service'
 import { Theme } from './theme'
-import L from 'mapbox'
+import L from 'mapbox.js'
 
 export class Mapbox extends Service {
   /**
