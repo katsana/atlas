@@ -4,7 +4,7 @@ import { Position } from './generic/position'
 import { Service } from './service'
 import _ from 'lodash'
 
-let config = {
+var config = {
   google: {},
   mapbox: {}
 };
@@ -40,17 +40,6 @@ class Atlas {
   }
 
   /**
-   * Create new position.
-   *
-   * @param  {number}   latitude
-   * @param  {number}   longitude
-   * @return {Position}
-   */
-  newPosition(latitude: number, longitude: number): Position {
-    return new Position(latitude, longitude);
-  }
-
-  /**
    * Register google service.
    *
    * @return {Google}
@@ -75,6 +64,17 @@ class Atlas {
    */
   static config(options: any) {
     config = _.extend(config, options);
+  }
+
+  /**
+   * Create new position.
+   *
+   * @param  {number}   latitude
+   * @param  {number}   longitude
+   * @return {Position}
+   */
+  static newPosition(latitude: number, longitude: number): Position {
+    return new Position(latitude, longitude);
   }
 }
 
