@@ -1,6 +1,7 @@
 import { Canvas as Map } from '../canvas'
 import { Position } from './position'
-import L from 'mapbox'
+import { Theme } from './theme'
+import L from 'mapbox.js'
 import _ from 'lodash'
 
 export class Canvas extends Map {
@@ -20,6 +21,25 @@ export class Canvas extends Map {
     };
 
     return new L.map(id, _.extend(config, options));
+  }
+
+  addTheme(theme: Theme): this {
+    let styleControl = L.control.layers(theme.asTiles());
+    let zoomControl = new L.control.zoom();
+    let tile = theme.activeTile();
+
+    styleControl.addTo(this.instance);
+    zoomControl.setPosition('topright').addTo(this.instance);
+
+    tile.on('ready', () => {
+      tile.addTo(this.instance);
+    });
+
+    this.instance.on('baselayerchange', (e) => {
+      theme.activate(e.name);
+    });
+
+    return this;
   }
 
   /**
