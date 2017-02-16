@@ -5,22 +5,6 @@ import L from 'mapbox'
 
 export class MapboxService implements Service {
   /**
-   * Service options.
-   *
-   * @type {object}
-   */
-  protected options: any;
-
-  /**
-   * Construct a new class.
-   *
-   * @param {object} options
-   */
-  constructor(options: any) {
-    this.options = options;
-  }
-
-  /**
    * Construct a new canvas.
    *
    * @param  {string} id

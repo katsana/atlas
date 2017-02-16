@@ -1,7 +1,16 @@
 import { Canvas } from './canvas'
 import { Position } from './position'
 
-export interface Service {
+export abstract class Service {
+  /**
+   * Construct a new class.
+   *
+   * @param {object} options
+   */
+  constructor(protected options: any = {}) {
+    //
+  }
+
   /**
    * Construct a new canvas.
    *
@@ -9,7 +18,7 @@ export interface Service {
    * @param  {object} options
    * @return {Canvas}
    */
-  newCanvas(id: string, options: any): Canvas;
+  abstract newCanvas(id: string, options: any): Canvas;
 
   /**
    * Construct a new position.
@@ -18,5 +27,5 @@ export interface Service {
    * @param  {number}   longitude
    * @return {Position}
    */
-  newPosition(latitude: number, longitude: number): Position;
+  abstract newPosition(latitude: number, longitude: number): Position;
 }
