@@ -79,11 +79,11 @@ export abstract class Marker {
   /**
    * Make a marker.
    *
-   * @param  {Position} position
-   * @param  {object}   options
+   * @param  {object} position
+   * @param  {object} options
    * @return {object}
    */
-  abstract make(position: Position, options: any): any;
+  abstract make(position: any, options: any): any;
 
   /**
    * Add marker to canvas.
@@ -98,9 +98,9 @@ export abstract class Marker {
    *
    * @param  {string} text
    * @param  {object} options
-   * @return {object}
+   * @return {this}
    */
-  abstract label(text: string, options: any): any;
+  abstract label(text: string, options: any): this;
 
   /**
    * Hide the marker.
@@ -129,9 +129,9 @@ export abstract class Marker {
    *
    * @param  {string} text
    * @param  {object} options
-   * @return {object}
+   * @return {this}
    */
-  abstract popup(text: string, options: any): any;
+  abstract popup(text: string, options: any): this;
 
   /**
    * Remove the marker from canvas.
@@ -154,4 +154,11 @@ export abstract class Marker {
    * @return {this}
    */
   abstract showLabel(): this;
+
+  /**
+   * Show popup.
+   *
+   * @return {this}
+   */
+  abstract showPopup(): this;
 }
