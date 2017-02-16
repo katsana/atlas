@@ -1,3 +1,12 @@
+/**
+ * Convert to radian.
+ * @param  {number} value [description]
+ * @return {number}       [description]
+ */
+function to_radian(value: number): number {
+  return value * (Math.PI / 180);
+};
+
 export abstract class Position {
   /**
    * Construct a new class instance.
@@ -6,8 +15,32 @@ export abstract class Position {
    * @param {number} longitude
    */
   constructor(protected latitude: number, protected longitude: number) {
-    this.latitude = latitude
-    this.longitude = longitude
+    this.latitude = latitude;
+    this.longitude = longitude;
+  }
+
+  /**
+   * Calculate distance in KM.
+   *
+   * @param {number} latitude
+   * @param {number} longitude
+   * @return {number}
+   */
+  distanceInKm(latitude: number, longitude: number): number {
+    let dlat, dlng, lat1, lat2, a, c;
+
+    dlat = to_radian(latitude - this.latitude);
+    dlng = to_radian(longitude - this.longitude);
+    lat1 = to_radian(this.latitude);
+    lat2 = to_radian(latitude);
+
+    a = Math.sin(dlat/2) * Math.sin(dlat/2) +
+        Math.cos(lat1) * Math.cos(lat2) *
+        Math.sin(dlng/2) * Math.sin(dlng/2);
+
+    c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+    return 6371 * c;
   }
 
   /**
