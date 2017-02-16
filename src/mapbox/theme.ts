@@ -1,11 +1,6 @@
 import _ from 'lodash'
-import Javie from 'javie'
 
-var styles = {
-  Street: Javie.get('map.layer.street'),
-  Light: Javie.get('map.layer.light'),
-  Satellite: Javie.get('map.layer.satellite')
-};
+var styles = {};
 
 export class Theme {
   /**
