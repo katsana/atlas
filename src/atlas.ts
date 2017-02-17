@@ -9,24 +9,20 @@ var config = {
   mapbox: {}
 };
 
-class Atlas {
-  /**
-   * The service.
-   *
-   * @type {Service}
-   */
-  protected service: Service;
+var drivers = {};
 
+class Atlas {
   /**
    * Construct a new class.
    *
    * @param {string} service
+   * @return {Service}
    */
-  constructor(service: string) {
+  protected createDriver(service: string): Service {
     if (service == 'google') {
-      this.service = this.registerGoogleService();
+      return this.registerGoogleService();
     } else if (service == 'mapbox') {
-      this.service = this.registerMapboxService();
+      return this.registerMapboxService();
     }
   }
 
@@ -35,8 +31,12 @@ class Atlas {
    *
    * @return {Service}
    */
-  driver(): Service {
-    return this.service;
+  driver(service: string): Service {
+    if (_.isNull(drivers[service])) {
+      drivers[service] = this.createDriver(service);
+    }
+
+    return drivers[service];
   }
 
   /**
