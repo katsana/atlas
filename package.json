@@ -8,7 +8,6 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "mapbox.js": "^2.3.0",
-    "socket.io-client": "^1.4.6",
     "store2": "^2.5.0",
     "underscore": "^1.8.3"
   },
