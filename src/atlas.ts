@@ -35,7 +35,7 @@ class Atlas {
       return this.registerMapboxService();
     }
 
-    throw new Error(`Service: [${service}] is not available`);
+    throw new Error(`Driver [${service}] is not available.`);
   }
 
   /**
