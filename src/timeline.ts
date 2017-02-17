@@ -1,7 +1,7 @@
 import { Canvas } from './canvas'
 import { Breadcrumb } from './breadcrumb'
 import { Position } from './position'
-import _ from 'lodash'
+import _ from 'underscore'
 
 export abstract class Timeline extends Breadcrumb {
   /**

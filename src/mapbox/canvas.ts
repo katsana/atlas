@@ -2,7 +2,7 @@ import { Canvas as Map } from '../canvas'
 import { Position } from './position'
 import { Theme } from './theme'
 import L from 'mapbox.js'
-import _ from 'lodash'
+import _ from 'underscore'
 
 export class Canvas extends Map {
   /**

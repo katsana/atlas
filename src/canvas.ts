@@ -1,5 +1,5 @@
-import _ from 'lodash'
 import { Position } from './position'
+import _ from 'underscore'
 
 export abstract class Canvas {
   /**

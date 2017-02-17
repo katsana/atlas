@@ -1,6 +1,6 @@
 import { Canvas as Map } from '../canvas'
 import { Position } from '../position'
-import _ from 'lodash'
+import _ from 'underscore'
 
 export class Canvas extends Map {
   /**

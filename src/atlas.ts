@@ -2,7 +2,7 @@ import { Google } from './google/service'
 import { Mapbox } from './mapbox/service'
 import { Position } from './generic/position'
 import { Service } from './service'
-import _ from 'lodash'
+import _ from 'underscore'
 
 var config = {
   google: {},
