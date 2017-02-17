@@ -10,7 +10,7 @@ class Atlas {
    *
    * @type {object}
    */
-  static config: any = {
+  static _config: any = {
     google: {},
     mapbox: {}
   };
@@ -57,7 +57,7 @@ class Atlas {
    * @return {Google}
    */
   private registerGoogleService(): Google {
-    return new Google(config.google);
+    return new Google(Atlas._config.google);
   }
 
   /**
@@ -66,7 +66,7 @@ class Atlas {
    * @return {Mapbox}
    */
   private registerMapboxService(): Mapbox {
-    return new Mapbox(config.mapbox);
+    return new Mapbox(Atlas._config.mapbox);
   }
 
   /**
@@ -75,7 +75,7 @@ class Atlas {
    * @param {any} options [description]
    */
   static config(options: any) {
-    Atlas.config = _.extend(Atlas.config, options);
+    Atlas._config = _.extend(Atlas._config, options);
   }
 
   /**
