@@ -1,4 +1,5 @@
 import _ from 'underscore'
+import store from 'store2'
 
 var styles = {};
 
@@ -32,7 +33,7 @@ export class Theme {
     let theme;
 
     if (Store.has('mapbox-theme')) {
-      theme = Store('mapbox-theme');
+      theme = store('mapbox-theme');
     }
 
     if (_.indexOf(_.keys(styles), theme) < 0) {
@@ -58,7 +59,7 @@ export class Theme {
    * @return {this}
    */
   activate(theme: string): this {
-    Store('mapbox-theme', theme);
+    store('mapbox-theme', theme);
     this.theme = theme;
 
     return this;

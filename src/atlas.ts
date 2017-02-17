@@ -23,6 +23,8 @@ class Atlas {
       return this.registerGoogleService();
     } else if (service == 'mapbox') {
       return this.registerMapboxService();
+    } else {
+      throw new Error(`Service: [${service}] is not available`);
     }
   }
 
@@ -32,7 +34,7 @@ class Atlas {
    * @return {Service}
    */
   driver(service: string): Service {
-    if (_.isNull(drivers[service])) {
+    if (!drivers[service] instanceof Service) {
       drivers[service] = this.createDriver(service);
     }
 
