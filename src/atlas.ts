@@ -72,7 +72,7 @@ class Atlas {
   /**
    * Attach configuration.
    *
-   * @param {any} options [description]
+   * @param {any} options
    */
   static config(options: any) {
     Atlas._config = _.extend(Atlas._config, options);
