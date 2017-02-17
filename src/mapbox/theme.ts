@@ -1,9 +1,14 @@
 import _ from 'underscore'
 import store from 'store2'
 
-var styles = {};
-
 export class Theme {
+  /**
+   * List of theme styles.
+   *
+   * @type {object}
+   */
+  static styles: any = {};
+
   /**
    * The theme name.
    *
@@ -36,7 +41,7 @@ export class Theme {
       theme = store('mapbox-theme');
     }
 
-    if (_.indexOf(_.keys(styles), theme) < 0) {
+    if (_.indexOf(_.keys(Theme.styles), theme) < 0) {
       return 'Street';
     }
 
@@ -72,7 +77,7 @@ export class Theme {
    * @return {string}
    */
   getThemeSchema(theme: string): string {
-    return styles[theme];
+    return Theme.styles[theme];
   }
 
   /**
@@ -90,7 +95,7 @@ export class Theme {
    * @return {object}
    */
   tiles(): any {
-    return _.mapObject(styles, (style) => {
+    return _.mapObject(Theme.styles, (style) => {
       return L.mapbox.tileLayer(style);
     });
   }
@@ -105,6 +110,6 @@ export class Theme {
   }
 
   static styles(options: any): void {
-    styles = _.extend(styles, options);
+    Theme.styles = _.extend(Theme.styles, options);
   }
 }

@@ -4,14 +4,23 @@ import { Position } from './generic/position'
 import { Service } from './service'
 import _ from 'underscore'
 
-var config = {
-  google: {},
-  mapbox: {}
-};
-
-var drivers = {};
-
 class Atlas {
+  /**
+   * List of configuration.
+   *
+   * @type {object}
+   */
+  static config: any = {
+    google: {},
+    mapbox: {}
+  };
+
+  /**
+   * List of registered services.
+   *
+   * @type {object}
+   */
+  protected drivers: any = {};
   /**
    * Construct a new class.
    *
@@ -34,13 +43,12 @@ class Atlas {
    * @return {Service}
    */
   driver(service: string): Service {
-    console.log('Driver:', drivers[service]);
-    if (drivers[service] !== null) {
+    if (this.drivers[service] !== null) {
       console.log(`Building driver for ${service}`);
-      drivers[service] = this.createDriver(service);
+      this.drivers[service] = this.createDriver(service);
     }
 
-    return drivers[service];
+    return this.drivers[service];
   }
 
   /**
@@ -67,7 +75,7 @@ class Atlas {
    * @param {any} options [description]
    */
   static config(options: any) {
-    config = _.extend(config, options);
+    Atlas.config = _.extend(Atlas.config, options);
   }
 
   /**
