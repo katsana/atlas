@@ -21,6 +21,7 @@ class Atlas {
    * @type {object}
    */
   protected drivers: any = {};
+
   /**
    * Construct a new class.
    *
@@ -44,7 +45,6 @@ class Atlas {
    */
   driver(service: string): Service {
     if (this.drivers[service] !== null) {
-      console.log(`Building driver for ${service}`);
       this.drivers[service] = this.createDriver(service);
     }
 
