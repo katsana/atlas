@@ -32,7 +32,7 @@ export class Theme {
   make(): string {
     let theme;
 
-    if (Store.has('mapbox-theme')) {
+    if (store.has('mapbox-theme')) {
       theme = store('mapbox-theme');
     }
 
