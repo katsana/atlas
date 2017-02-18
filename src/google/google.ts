@@ -1,35 +1,15 @@
 import { Canvas } from './canvas'
 import { Position } from './position'
 import { Service } from '../service'
-import { Theme } from './theme'
-import L from 'mapbox.js'
 
-export class Mapbox extends Service {
-  /**
-   * Theme instance.
-   *
-   * @type {Theme}
-   */
-  protected theme: Theme;
-
-  /**
-   * Construct a new class.
-   *
-   * @param {object} options
-   */
-  constructor(options: any) {
-    super(options);
-
-    this.theme = new Theme();
-  }
-
+export class Google extends Service {
   /**
    * Access token.
    *
    * @return {string}
    */
   accessToken(): string {
-    return this.options.accessToken;
+    return this.options.apiKey;
   }
 
   /**
@@ -40,8 +20,7 @@ export class Mapbox extends Service {
    * @return {Canvas}
    */
   newCanvas(id: string, options: any): Canvas {
-    return (new Canvas(id, options))
-              .theme(this.theme);
+    return new Canvas(id, options);
   }
 
   /**
@@ -52,6 +31,15 @@ export class Mapbox extends Service {
    * @return {Position}
    */
   newPosition(latitude: number, longitude: number): Position {
-    return new Position(latitude, longitude, {accessToken: this.accessToken(), theme: this.theme.current});
+    return new Position(latitude, longitude, {accessToken: this.accessToken()});
+  }
+
+  /**
+   * Get service name.
+   *
+   * @return string
+   */
+  get name(): string {
+    return 'google'
   }
 }

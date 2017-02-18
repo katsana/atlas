@@ -1,5 +1,5 @@
-import { Google } from './google/service'
-import { Mapbox } from './mapbox/service'
+import { Google } from './google/google'
+import { Mapbox } from './mapbox/mapbox'
 import { Position } from './generic/position'
 import { Service } from './service'
 import _ from 'underscore'
@@ -30,7 +30,7 @@ class Atlas {
    */
   protected createDriver(service: string): Service {
     if (service == 'google') {
-      return this.registerGoogleService();
+      throw new Error('Not ready yet!'); // return this.registerGoogleService();
     } else if (service == 'mapbox') {
       return this.registerMapboxService();
     }
@@ -56,9 +56,9 @@ class Atlas {
    *
    * @return {Google}
    */
-  private registerGoogleService(): Google {
-    return new Google(Atlas._config.google);
-  }
+  // private registerGoogleService(): Google {
+    // return new Google(Atlas._config.google);
+  // }
 
   /**
    * Register mapbox service.

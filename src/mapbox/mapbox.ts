@@ -4,23 +4,37 @@ import { Icon } from './icon'
 import { Marker } from './marker'
 import { Position } from './position'
 import { Routing } from './routing'
+import { Service } from '../service'
+import { Theme } from './theme'
 import { Timeline } from './timeline'
+import L from 'mapbox.js'
 
-export abstract class Service {
+export class Mapbox extends Service {
   /**
-   * Service options.
+   * Theme instance.
    *
-   * @type {object}
+   * @type {Theme}
    */
-  protected options: any;
+  protected theme: Theme;
 
   /**
    * Construct a new class.
    *
    * @param {object} options
    */
-  constructor(options: any = {}) {
-    this.options = options;
+  constructor(options: any) {
+    super(options);
+
+    this.theme = new Theme();
+  }
+
+  /**
+   * Access token.
+   *
+   * @return {string}
+   */
+  accessToken(): string {
+    return this.options.accessToken;
   }
 
   /**
@@ -30,7 +44,9 @@ export abstract class Service {
    * @param  {object} options
    * @return {Avatar}
    */
-  abstract newAvatar(vehicle: any, options: any): Avatar;
+  newAvatar(vehicle: any, options: any): Avatar {
+    return new Avatar(vehicle, options);
+  }
 
   /**
    * Construct a new canvas.
@@ -39,7 +55,10 @@ export abstract class Service {
    * @param  {object} options
    * @return {Canvas}
    */
-  abstract newCanvas(id: string, options: any): Canvas;
+  newCanvas(id: string, options: any): Canvas {
+    return (new Canvas(id, options))
+              .theme(this.theme);
+  }
 
   /**
    * Construct new icon.
@@ -49,7 +68,9 @@ export abstract class Service {
    * @param {string} size
    * @return {Icon}
    */
-  abstract newIcon(label: string, color?: string, size?: string): Icon;
+  newIcon(label: string, color?: string, size?: string): Icon {
+    return new Icon(label, color, size);
+  }
 
   /**
    * Construct new marker.
@@ -58,7 +79,9 @@ export abstract class Service {
    * @param  {object}   options
    * @return {Marker}
    */
-  abstract newMarker(position: Position, options: any): Marker;
+  newMarker(position: Position, options: any): Marker {
+    return new Marker(position, options);
+  }
 
   /**
    * Construct a new position.
@@ -67,7 +90,9 @@ export abstract class Service {
    * @param  {number}   longitude
    * @return {Position}
    */
-  abstract newPosition(latitude: number, longitude: number): Position;
+  newPosition(latitude: number, longitude: number): Position {
+    return new Position(latitude, longitude, {accessToken: this.accessToken(), theme: this.theme.current});
+  }
 
   /**
    * Construct new routing.
@@ -76,7 +101,9 @@ export abstract class Service {
    * @param {object} options
    * @return {Routing}
    */
-  abstract newRouting(canvas: Canvas, options?: any): Routing;
+  newRouting(canvas: Canvas, options?: any): Routing {
+    return new Routing(canvas, options);
+  }
 
   /**
    * Construct new timeline.
@@ -86,12 +113,16 @@ export abstract class Service {
    * @param {object} position
    * @return {Timeline}
    */
-  abstract newTimeline(canvas: Canvas, options?: any, position?: any): Timeline;
+  newTimeline(canvas: Canvas, options?: any, position?: any): Timeline {
+    return new Timeline(canvas, options, position);
+  }
 
   /**
    * Get service name.
    *
-   * @return string
+   * @return {string}
    */
-  abstract get name(): string;
+  get name(): string {
+    return 'mapbox'
+  }
 }
