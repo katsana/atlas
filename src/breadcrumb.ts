@@ -1,7 +1,9 @@
 import { Canvas } from './canvas'
+import { Marker } from './marker'
 import { Position } from './position'
 
 export abstract class Breadcrumb {
+  protected marker: Marker;
   /**
    * The position.
    *
@@ -36,6 +38,9 @@ export abstract class Breadcrumb {
     this.position = position;
     this.centerTo(position);
 
+    if (this.marker != null)
+      this.marker.moveTo(position);
+
     return this;
   }
 
@@ -57,6 +62,18 @@ export abstract class Breadcrumb {
   start(position: Position): this {
     this.add(position);
     this.canvas.centerTo(position);
+
+    return this;
+  }
+
+  /**
+   * Attach marker to breadcrumb.
+   *
+   * @param  {Marker} marker
+   * @return {this}
+   */
+  withMarker(marker: Marker): this {
+    this.marker = marker;
 
     return this;
   }
