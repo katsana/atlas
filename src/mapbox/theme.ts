@@ -7,7 +7,7 @@ export class Theme {
    *
    * @type {object}
    */
-  static styles: any = {};
+  static _styles: any = {};
 
   /**
    * The theme name.
@@ -49,15 +49,6 @@ export class Theme {
   }
 
   /**
-   * Get active theme.
-   *
-   * @return {string}
-   */
-  active(): string {
-    return this.getThemeSchema(this.theme);
-  }
-
-  /**
    * Activate a theme.
    *
    * @param  {string} theme
@@ -76,17 +67,8 @@ export class Theme {
    * @param  {string} theme
    * @return {string}
    */
-  getThemeSchema(theme: string): string {
-    return Theme.styles[theme];
-  }
-
-  /**
-   * Get active theme tile.
-   *
-   * @return {object}
-   */
-  activeTile(): any {
-    return L.mapbox.tileLayer(this.theme);
+  getThemeKey(theme: string): string {
+    return Theme._styles[theme];
   }
 
   /**
@@ -101,7 +83,7 @@ export class Theme {
   }
 
   /**
-   * Get current.
+   * Get current theme name.
    *
    * @return {string}
    */
@@ -109,7 +91,32 @@ export class Theme {
     return this.theme;
   }
 
+  /**
+   * Get active theme.
+   *
+   * @return {string}
+   */
+  get active(): string {
+    return this.getThemeKey(this.theme);
+  }
+
+
+
+  /**
+   * Get active theme tile.
+   *
+   * @return {object}
+   */
+  get activeTile(): any {
+    return L.mapbox.tileLayer(this.theme);
+  }
+
+  /**
+   * Setup styles.
+   *
+   * @param {object} options
+   */
   static styles(options: any): void {
-    Theme.styles = _.extend(Theme.styles, options);
+    Theme._styles = _.extend(Theme._styles, options);
   }
 }
