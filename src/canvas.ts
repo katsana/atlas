@@ -41,7 +41,7 @@ export abstract class Canvas {
    * @param  {object}  extender
    * @return {this}
    */
-  extends(extender: any): this {
+  extend(extender: any): this {
     if (_.isFunction(extender[this.service])) {
       extender[this.service].apply(extender, [this]);
     }
