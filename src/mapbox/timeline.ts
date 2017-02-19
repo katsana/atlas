@@ -35,7 +35,11 @@ export class Timeline extends Breadcrumb {
    * @return {this}
    */
   make(options: any): any {
-    return L.polyline([], options);
+    let config = {
+      className: options.className ? options.className : ''
+    };
+
+    return L.polyline([], config);
   }
 
   /**

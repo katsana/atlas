@@ -35,10 +35,14 @@ export class Marker extends BaseMarker {
    * @return {this}
    */
   label(text: string, options: any): this {
-    if (_.isFunction(this.instance.bindLabel)) {
-      options.noHide = false;
+    let config = {
+      className: options.className ? options.className : '',
+      clickable: options.clickable ? options.clickable : false,
+      noHide: false
+    };
 
-      this.instance.bindLabel(text, options)
+    if (_.isFunction(this.instance.bindLabel)) {
+      this.instance.bindLabel(text, config)
         .on('mouseover', (e) => {
           if (!this.forceShown)
             this.showLabel();
