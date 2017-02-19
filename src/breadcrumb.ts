@@ -7,7 +7,7 @@ export abstract class Breadcrumb {
    *
    * @type {Position|Array}
    */
-  protected position;
+  protected position: any;
 
   /**
    * The service polyline.

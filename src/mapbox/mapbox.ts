@@ -56,8 +56,7 @@ export class Mapbox extends Service {
    * @return {Canvas}
    */
   newCanvas(id: string, options: any): Canvas {
-    return (new Canvas(id, options))
-              .theme(this.theme);
+    return new Canvas(id, options, this.theme);
   }
 
   /**
@@ -91,7 +90,12 @@ export class Mapbox extends Service {
    * @return {Position}
    */
   newPosition(latitude: number, longitude: number): Position {
-    return new Position(latitude, longitude, {accessToken: this.accessToken(), style: this.theme.active});
+    let options = {
+      accessToken: this.accessToken(),
+      style: this.theme.active
+    };
+
+    return new Position(latitude, longitude, options);
   }
 
   /**

@@ -1,4 +1,5 @@
 import _ from 'underscore'
+import L from 'mapbox.js'
 import store from 'store2'
 
 export class Theme {
@@ -7,23 +8,23 @@ export class Theme {
    *
    * @type {object}
    */
-  static _styles: any = {};
+  protected styles: any = {};
 
   /**
    * The theme name.
    *
    * @type {string}
    */
-  private theme: string;
+  protected theme: string;
 
   /**
    * Construct a new class.
    *
-   * @param {object} options
+   * @param {object} styles
    */
-  constructor(options: any = {}) {
-    if (_.isEmpty(options)) {
-      Theme.styles(options);
+  constructor(styles: any = {}) {
+    if (!_.isEmpty(styles)) {
+      this.styles = styles;
     }
 
     this.theme = this.make();
@@ -37,15 +38,15 @@ export class Theme {
   make(): string {
     let theme;
 
-    if (store.has('mapbox-theme')) {
+    if (store.has('mapbox-theme'))
       theme = store('mapbox-theme');
-    }
 
-    if (_.indexOf(_.keys(Theme.styles), theme) < 0) {
-      return 'Street';
-    }
+    if (_.indexOf(_.keys(this.styles), theme) > -1)
+      return theme;
 
-    return theme;
+    store('mapbox-theme', 'Street');
+
+    return 'Street';
   }
 
   /**
@@ -68,7 +69,7 @@ export class Theme {
    * @return {string}
    */
   getThemeKey(theme: string): string {
-    return Theme._styles[theme];
+    return this.styles[theme];
   }
 
   /**
@@ -77,7 +78,7 @@ export class Theme {
    * @return {object}
    */
   tiles(): any {
-    return _.mapObject(Theme.styles, (style) => {
+    return _.mapObject(this.styles, function(style) {
       return L.mapbox.tileLayer(style);
     });
   }
@@ -107,14 +108,5 @@ export class Theme {
    */
   get activeTile(): any {
     return L.mapbox.tileLayer(this.active);
-  }
-
-  /**
-   * Setup styles.
-   *
-   * @param {object} options
-   */
-  static styles(options: any): void {
-    Theme._styles = _.extend(Theme._styles, options);
   }
 }

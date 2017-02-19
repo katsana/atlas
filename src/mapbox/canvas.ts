@@ -6,6 +6,18 @@ import _ from 'underscore'
 
 export class Canvas extends Map {
   /**
+   * Construct a new class instance.
+   *
+   * @param {string} id
+   * @param {object} options
+   * @param {Theme} theme
+   */
+  constructor(id: string, options: any = {}, theme: Theme) {
+    super(id, options);
+    this.theme(theme);
+  }
+
+  /**
    * Make the map instance.
    *
    * @param {string} id
@@ -30,16 +42,16 @@ export class Canvas extends Map {
    * @return {this}
    */
   theme(theme: Theme): this {
+    let tile = theme.activeTile;
     let styleControl = L.control.layers(theme.tiles());
     let zoomControl = new L.control.zoom();
-    let tile = theme.activeTile;
-
-    styleControl.addTo(this.instance);
-    zoomControl.setPosition('topright').addTo(this.instance);
 
     tile.on('ready', () => {
       tile.addTo(this.instance);
     });
+
+    styleControl.addTo(this.instance);
+    zoomControl.setPosition('topright').addTo(this.instance);
 
     this.instance.on('baselayerchange', (e) => {
       theme.activate(e.name);
@@ -75,7 +87,7 @@ export class Canvas extends Map {
       if (zoom < 10)
         zoom = 16;
 
-      map.setView(Position.via(position));
+      map.setView(Position.via(position), zoom);
     });
   }
 

@@ -47,7 +47,7 @@ export abstract class Canvas {
    * @return {this}
    */
   tap(callback) {
-    return callback(this.instance);
+    return callback.apply(this, [this.instance]);
   }
 
   /**
