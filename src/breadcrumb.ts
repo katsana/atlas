@@ -1,14 +1,15 @@
 import { Canvas } from './canvas'
 import { Marker } from './marker'
+import { Icon } from './icon'
 import { Position } from './position'
 
 export abstract class Breadcrumb {
   /**
-   * Marker instance.
+   * Avatar instance.
    *
-   * @type {Marker|null}
+   * @type {Marker|Icon|null}
    */
-  protected marker: Marker;
+  protected avatar: Marker|Icon;
 
   /**
    * The position.
@@ -76,11 +77,11 @@ export abstract class Breadcrumb {
   /**
    * Attach marker to breadcrumb.
    *
-   * @param  {Marker} marker
+   * @param  {Marker|Icon} avatar
    * @return {this}
    */
-  withMarker(marker: Marker): this {
-    this.marker = marker;
+  withMarker(avatar: Marker|Icon): this {
+    this.avatar = avatar;
 
     return this;
   }
