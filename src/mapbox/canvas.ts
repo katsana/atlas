@@ -23,7 +23,12 @@ export class Canvas extends Map {
     return new L.map(id, config);
   }
 
-
+  /**
+   * Set theme for canvas.
+   *
+   * @param  {Theme} theme
+   * @return {this}
+   */
   theme(theme: Theme): this {
     let styleControl = L.control.layers(theme.tiles());
     let zoomControl = new L.control.zoom();
