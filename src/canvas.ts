@@ -7,7 +7,7 @@ export abstract class Canvas {
    *
    * @type {string}
    */
-  abstract private service: string;
+  protected abstract service: string;
 
   /**
    * The map instance.

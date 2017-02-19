@@ -8,7 +8,7 @@ export class Canvas extends Map {
    *
    * @type {string}
    */
-  private service: string = 'google'
+  protected service: string = 'google'
 
   /**
    * Make the map instance.

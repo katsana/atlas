@@ -10,7 +10,7 @@ export class Canvas extends Map {
    *
    * @type {string}
    */
-  private service: string = 'mapbox'
+  protected service: string = 'mapbox'
 
   /**
    * Construct a new class instance.

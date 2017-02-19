@@ -2,6 +2,7 @@ import { Canvas } from './canvas'
 import { Marker as BaseMarker } from '../marker'
 import { Position } from './position'
 import _ from 'underscore'
+import L from 'mapbox.js'
 
 export class Marker extends BaseMarker {
   /**
