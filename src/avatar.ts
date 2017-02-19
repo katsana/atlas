@@ -25,7 +25,7 @@ export abstract class Avatar extends Icon {
    * @param  {string} state
    * @return {this}
    */
-  update(state: string): this {
+  set state(state: string) {
     let id = this.vehicle.id;
 
     let container = document.getElementById(`avatar-icon-${id}`)
@@ -37,8 +37,6 @@ export abstract class Avatar extends Icon {
         pin.style.fill = colors[state];
       }
     }
-
-    return this;
   }
 
   /**
