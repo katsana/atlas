@@ -70,7 +70,7 @@ export class Canvas extends Map {
       if (zoom < 10)
         zoom = 16;
 
-      map.setCenter(Position.via(position));
+      map.setView(Position.via(position));
     });
   }
 
