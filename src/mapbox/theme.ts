@@ -100,15 +100,13 @@ export class Theme {
     return this.getThemeKey(this.theme);
   }
 
-
-
   /**
    * Get active theme tile.
    *
    * @return {object}
    */
   get activeTile(): any {
-    return L.mapbox.tileLayer(this.theme);
+    return L.mapbox.tileLayer(this.active);
   }
 
   /**
