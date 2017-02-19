@@ -25,7 +25,7 @@ export class Mapbox extends Service {
   constructor(options: any) {
     super(options);
 
-    this.theme = new Theme();
+    this.theme = new Theme(options.styles ? options.styles : {});
   }
 
   /**
