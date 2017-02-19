@@ -91,7 +91,7 @@ export class Mapbox extends Service {
    * @return {Position}
    */
   newPosition(latitude: number, longitude: number): Position {
-    return new Position(latitude, longitude, {accessToken: this.accessToken(), theme: this.theme.current});
+    return new Position(latitude, longitude, {accessToken: this.accessToken(), style: this.theme.current});
   }
 
   /**

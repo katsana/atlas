@@ -11,7 +11,7 @@ export class Position extends BasePosition {
    * @return {string}
    */
   image(dimension: string, zoom: number): string {
-    return `https://api.mapbox.com/v4/{this.options.theme}/pin-l-car+f44(${this.serviceCoordinate},${zoom})/${this.serviceCoordinate},${zoom}/${dimension}.png?access_token=${this.options.accessToken}`;
+    return `https://api.mapbox.com/v4/${this.options.style}/pin-l-car+f44(${this.serviceCoordinate},${zoom})/${this.serviceCoordinate},${zoom}/${dimension}.png?access_token=${this.options.accessToken}`;
   }
 
   /**

@@ -25,7 +25,7 @@ export class Canvas extends Map {
 
 
   theme(theme: Theme): this {
-    let styleControl = L.control.layers(theme.asTiles());
+    let styleControl = L.control.layers(theme.tiles());
     let zoomControl = new L.control.zoom();
     let tile = theme.activeTile();
 
