@@ -36,6 +36,7 @@ export abstract class Breadcrumb {
    */
   add(position: Position): this {
     this.position = position;
+    this.polyline.addLatLng(Position.via(position));
     this.centerTo(position);
 
     if (this.marker != null)
