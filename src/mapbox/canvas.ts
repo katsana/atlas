@@ -6,6 +6,13 @@ import _ from 'underscore'
 
 export class Canvas extends Map {
   /**
+   * Get canvas service.
+   *
+   * @type {string}
+   */
+  private service: string = 'mapbox'
+
+  /**
    * Construct a new class instance.
    *
    * @param {string} id

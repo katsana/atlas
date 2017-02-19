@@ -3,6 +3,13 @@ import _ from 'underscore'
 
 export abstract class Canvas {
   /**
+   * Get canvas service.
+   *
+   * @type {string}
+   */
+  abstract private service: string;
+
+  /**
    * The map instance.
    *
    * @type {object}
@@ -26,6 +33,20 @@ export abstract class Canvas {
    */
   get(): any {
     return this.instance;
+  }
+
+  /**
+   * Allow canvas to be extended.
+   *
+   * @param  {object}  extender
+   * @return {this}
+   */
+  extends(extender: any): this {
+    if (_.isFunction(extender[this.service])) {
+      extender[this.service].apply(extender, [this]);
+    }
+
+    return this
   }
 
   /**

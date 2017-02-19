@@ -4,6 +4,13 @@ import _ from 'underscore'
 
 export class Canvas extends Map {
   /**
+   * Get canvas service.
+   *
+   * @type {string}
+   */
+  private service: string = 'google'
+
+  /**
    * Make the map instance.
    *
    * @param {string} id
