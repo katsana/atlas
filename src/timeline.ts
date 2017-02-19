@@ -22,6 +22,7 @@ export abstract class Timeline extends Breadcrumb {
       }
 
       this.position = _.last(position);
+      this.start(position);
     }
   }
 

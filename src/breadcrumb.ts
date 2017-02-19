@@ -49,6 +49,19 @@ export abstract class Breadcrumb {
   }
 
   /**
+   * Start with a position.
+   *
+   * @param  {Position} position
+   * @return {this}
+   */
+  start(position: Position): this {
+    this.add(position);
+    this.canvas.centerTo(position);
+
+    return this;
+  }
+
+  /**
    * Center to current position.
    *
    * @param  {Position} position
