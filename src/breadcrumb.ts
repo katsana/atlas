@@ -3,7 +3,13 @@ import { Marker } from './marker'
 import { Position } from './position'
 
 export abstract class Breadcrumb {
+  /**
+   * Marker instance.
+   *
+   * @type {Marker|null}
+   */
   protected marker: Marker;
+
   /**
    * The position.
    *
