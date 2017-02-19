@@ -42,7 +42,6 @@ export class Canvas extends Map {
     if (options.position instanceof Position)
       config.center = Position.via(options.position);
 
-
     return new L.map(id, config);
   }
 
