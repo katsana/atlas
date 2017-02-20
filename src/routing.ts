@@ -9,7 +9,6 @@ export abstract class Routing extends Breadcrumb {
    */
   protected routing: string = 'follow';
 
-
   /**
    * Start polyline with a position.
    *

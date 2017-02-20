@@ -15,8 +15,6 @@ export abstract class Timeline extends Breadcrumb {
     super(canvas, options);
 
     if (position) {
-      position = Position.via(position);
-
       if (!_.isArray(position)) {
         position = [position];
       }

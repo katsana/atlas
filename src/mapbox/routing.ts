@@ -11,7 +11,7 @@ export class Routing extends Breadcrumb {
    * @return {this}
    */
   add(position: Position): this {
-    this.polyline.addLatLng(position);
+    this.polyline.addLatLng(Position.via(position));
 
     return super.add(position);
   }
@@ -35,7 +35,7 @@ export class Routing extends Breadcrumb {
    */
   centerTo(position: Position): this {
     if (this.routing == 'follow')
-      this.canvas.panTo(Position.via(position));
+      this.canvas.panTo(position);
 
     return this;
   }
