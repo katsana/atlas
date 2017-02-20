@@ -61,7 +61,7 @@ let canvas = mapbox.newCanvas('map', {});
 let position = mapbox.newPosition(3.161907, 101.617954)
 ```
 
-### Creating a Routing
+#### Creating a Routing
 
 ```javascript
 let routing = mapbox.newRouting(canvas, {});
