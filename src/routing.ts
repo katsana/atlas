@@ -9,6 +9,20 @@ export abstract class Routing extends Breadcrumb {
    */
   protected routing: string = 'follow';
 
+
+  /**
+   * Start polyline with a position.
+   *
+   * @param  {Position} position
+   * @return {this}
+   */
+  start(position: Position): this {
+    super.start(position);
+    this.centerTo(position);
+
+    return this;
+  }
+
   /**
    * Get routing mode.
    *

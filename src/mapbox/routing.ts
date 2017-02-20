@@ -17,6 +17,18 @@ export class Routing extends Breadcrumb {
   }
 
   /**
+   * Add polyline to canvas.
+   *
+   * @param  {Canvas} canvas
+   * @return {this}
+   */
+  addTo(canvas: Canvas): this {
+    this.polyline.addTo(Canvas.via(canvas));
+
+    return this;
+  }
+
+  /**
    * Center to current position.
    *
    * @param  {Position} position

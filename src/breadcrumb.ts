@@ -62,14 +62,26 @@ export abstract class Breadcrumb {
   }
 
   /**
-   * Start with a position.
+   * Start polyline with a position.
    *
    * @param  {Position} position
    * @return {this}
    */
   start(position: Position): this {
+    this.addTo(this.canvas);
     this.add(position);
-    this.canvas.centerTo(position);
+
+    return this;
+  }
+
+  /**
+   * End polyline with a position.
+   *
+   * @param  {Position} position
+   * @return {this}
+   */
+  end(position: Position): this {
+    this.add(position);
 
     return this;
   }
@@ -85,6 +97,14 @@ export abstract class Breadcrumb {
 
     return this;
   }
+
+  /**
+   * Add polyline to canvas.
+   *
+   * @param  {Canvas} canvas
+   * @return {this}
+   */
+  abstract addTo(canvas: Canvas): this;
 
   /**
    * Center to current position.
