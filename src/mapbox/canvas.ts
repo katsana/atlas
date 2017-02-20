@@ -1,8 +1,9 @@
 import { Canvas as Map } from '../canvas'
 import { Position } from './position'
 import { Theme } from './theme'
-import L from 'mapbox.js'
-import _ from 'underscore'
+
+var L = require('mapbox.js');
+var _ = require('underscore');
 
 export class Canvas extends Map {
   /**

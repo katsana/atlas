@@ -1,6 +1,7 @@
 import { Position as BasePosition } from '../position'
 import { Theme } from './theme'
-import L from 'mapbox.js'
+
+var L = require('mapbox.js');
 
 export class Position extends BasePosition {
   /**

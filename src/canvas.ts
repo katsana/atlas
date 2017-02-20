@@ -1,5 +1,6 @@
 import { Position } from './position'
-import _ from 'underscore'
+
+var _ = require('underscore');
 
 export abstract class Canvas {
   /**

@@ -1,8 +1,9 @@
 import { Canvas } from './canvas'
 import { Marker as BaseMarker } from '../marker'
 import { Position } from './position'
-import _ from 'underscore'
-import L from 'mapbox.js'
+
+var L = require('mapbox.js');
+var _ = require('underscore');
 
 export class Marker extends BaseMarker {
   /**

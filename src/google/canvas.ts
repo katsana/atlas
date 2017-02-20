@@ -1,6 +1,7 @@
 import { Canvas as Map } from '../canvas'
 import { Position } from '../position'
-import _ from 'underscore'
+
+var _ = require('underscore');
 
 export class Canvas extends Map {
   /**

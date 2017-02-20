@@ -2,7 +2,8 @@ import { Google } from './google/google'
 import { Mapbox } from './mapbox/mapbox'
 import { Position } from './generic/position'
 import { Service } from './service'
-import _ from 'underscore'
+
+var _ = require('underscore');
 
 class Atlas {
   /**

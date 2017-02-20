@@ -1,6 +1,6 @@
-import _ from 'underscore'
-import L from 'mapbox.js'
-import store from 'store2'
+var L = require('mapbox.js');
+var store = require('store2');
+var _ = require('underscore');
 
 export class Theme {
   /**

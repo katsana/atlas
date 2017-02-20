@@ -1,7 +1,8 @@
 import { Canvas } from './canvas'
 import { Position } from './position'
 import { Routing as Breadcrumb } from '../routing'
-import L from 'mapbox.js'
+
+var L = require('mapbox.js');
 
 export class Routing extends Breadcrumb {
   /**

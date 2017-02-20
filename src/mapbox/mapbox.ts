@@ -7,7 +7,8 @@ import { Routing } from './routing'
 import { Service } from '../service'
 import { Theme } from './theme'
 import { Timeline } from './timeline'
-import L from 'mapbox.js'
+
+var L = require('mapbox.js');
 
 export class Mapbox extends Service {
   /**
