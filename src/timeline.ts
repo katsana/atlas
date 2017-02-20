@@ -1,7 +1,8 @@
 import { Canvas } from './canvas'
 import { Breadcrumb } from './breadcrumb'
 import { Position } from './position'
-import _ from 'underscore'
+
+var _ = require('underscore');
 
 export abstract class Timeline extends Breadcrumb {
   /**
