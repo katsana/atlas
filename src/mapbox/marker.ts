@@ -153,4 +153,15 @@ export class Marker extends BaseMarker {
 
     return this;
   }
+
+  /**
+   * Get position of marker.
+   *
+   * @return {Position}
+   */
+  get position(): Position {
+    let coordinate = this.instance.getLatLng();
+
+    return new Position(coordinate.lat, coordinate.lng);
+  }
 }

@@ -77,6 +77,13 @@ export abstract class Marker {
   }
 
   /**
+   * Get position of marker.
+   *
+   * @return {Position}
+   */
+  abstract get position(): Position;
+
+  /**
    * Make a marker.
    *
    * @param  {object} position
