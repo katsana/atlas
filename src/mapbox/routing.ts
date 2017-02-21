@@ -35,6 +35,9 @@ export class Routing extends Breadcrumb {
    * @param  {Position} position
    */
   centerTo(position: Position): this {
+    if (this.avatar != null)
+      this.avatar.moveTo(position);
+
     if (this.routing == 'follow')
       this.canvas.panTo(position);
 

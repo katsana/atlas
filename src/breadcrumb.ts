@@ -46,9 +46,6 @@ export abstract class Breadcrumb {
     this.polyline.addLatLng(Position.via(position));
     this.centerTo(position);
 
-    if (this.avatar != null)
-      this.avatar.moveTo(position);
-
     return this;
   }
 
