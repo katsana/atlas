@@ -1,5 +1,6 @@
 import { Canvas } from './canvas'
 import { Breadcrumb } from './breadcrumb'
+import { Icon } from './icon'
 import { Marker } from './marker'
 import { Position } from './position'
 
@@ -27,15 +28,13 @@ export abstract class Timeline extends Breadcrumb {
   }
 
   /**
-   * Add position with marker.
+   * Attach marker to breadcrumb.
    *
-   * @param  {Position} position
-   * @param  {Marker}   marker
+   * @param  {Marker|Icon} avatar
    * @return {this}
    */
-  addWithMarker(position: Position, marker: Marker): this {
-    this.add(position);
-    marker.moveTo(position).addTo(this.canvas);
+  withMarker(avatar: Marker|Icon): this {
+    avatar.moveTo(this.position).addTo(this.canvas);
 
     return this;
   }
