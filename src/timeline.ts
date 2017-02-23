@@ -40,6 +40,18 @@ export abstract class Timeline extends Breadcrumb {
   }
 
   /**
+   * End polyline with a position.
+   *
+   * @param  {Position} position
+   * @return {this}
+   */
+  end(position: Position): this {
+    super.end(position);
+
+    return this.boundTo();
+  }
+
+  /**
    * Center to current position.
    *
    * @return {this}
