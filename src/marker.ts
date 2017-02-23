@@ -77,13 +77,6 @@ export abstract class Marker {
   }
 
   /**
-   * Get position of marker.
-   *
-   * @return {Position}
-   */
-  abstract get position(): Position;
-
-  /**
    * Make a marker.
    *
    * @param  {object} position
@@ -149,6 +142,14 @@ export abstract class Marker {
   abstract removeFrom(canvas: Canvas): this;
 
   /**
+   * Set popup content.
+   *
+   * @param {string} content
+   * @return {this}
+   */
+  abstract setPopupContent(content: string): this;
+
+  /**
    * Show the marker.
    *
    * @return {this}
@@ -168,4 +169,11 @@ export abstract class Marker {
    * @return {this}
    */
   abstract showPopup(): this;
+
+  /**
+   * Get position of marker.
+   *
+   * @return {Position}
+   */
+  abstract get position(): Position;
 }

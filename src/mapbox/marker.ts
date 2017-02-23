@@ -155,6 +155,17 @@ export class Marker extends BaseMarker {
   }
 
   /**
+   * Set popup content.
+   *
+   * @param {string} content
+   */
+  setPopupContent(content: string): this {
+    this.instance.setPopupContent(content);
+
+    return this;
+  }
+
+  /**
    * Get position of marker.
    *
    * @return {Position}

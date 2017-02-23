@@ -102,6 +102,18 @@ export abstract class Icon {
   }
 
   /**
+   * Set popup content.
+   *
+   * @param {string} content
+   * @return {this}
+   */
+  setPopupContent(content: string): this {
+    this.instance.setPopupContent(content);
+
+    return this;
+  }
+
+  /**
    * Make the marker instance.
    *
    * @param  {Position} position
