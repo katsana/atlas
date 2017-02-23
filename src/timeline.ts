@@ -1,5 +1,6 @@
 import { Canvas } from './canvas'
 import { Breadcrumb } from './breadcrumb'
+import { Marker } from './marker'
 import { Position } from './position'
 
 var _ = require('underscore');
@@ -26,12 +27,16 @@ export abstract class Timeline extends Breadcrumb {
   }
 
   /**
-   * Center to current position.
+   * Add position with marker.
    *
    * @param  {Position} position
+   * @param  {Marker}   marker
    * @return {this}
    */
-  centerTo(position: Position): this {
+  addWithMarker(position: Position, marker: Marker): this {
+    this.add(position);
+    marker.moveTo(position).addTo(this.canvas);
+
     return this;
   }
 
@@ -55,4 +60,14 @@ export abstract class Timeline extends Breadcrumb {
    * @return {this}
    */
   abstract bringToFront(): this;
+
+  /**
+   * Center to current position.
+   *
+   * @param  {Position} position
+   * @return {this}
+   */
+  centerTo(position: Position): this {
+    return this;
+  }
 }
