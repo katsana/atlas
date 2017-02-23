@@ -28,6 +28,16 @@ export abstract class Timeline extends Breadcrumb {
   }
 
   /**
+   * Center to current position.
+   *
+   * @param  {Position} position
+   * @return {this}
+   */
+  centerTo(position: Position): this {
+    return this;
+  }
+
+  /**
    * Attach marker to breadcrumb.
    *
    * @param  {Marker|Icon} avatar
@@ -61,12 +71,10 @@ export abstract class Timeline extends Breadcrumb {
   abstract bringToFront(): this;
 
   /**
-   * Center to current position.
+   * Set polyline style.
    *
-   * @param  {Position} position
+   * @param  {object}  options
    * @return {this}
    */
-  centerTo(position: Position): this {
-    return this;
-  }
+  abstract setStyle(options: any): this;
 }

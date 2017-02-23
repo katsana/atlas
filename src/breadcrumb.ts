@@ -96,6 +96,15 @@ export abstract class Breadcrumb {
   }
 
   /**
+   * Get polyline.
+   *
+   * @return {any}
+   */
+  get(): any {
+    return this.polyline;
+  }
+
+  /**
    * Add polyline to canvas.
    *
    * @param  {Canvas} canvas

@@ -88,4 +88,20 @@ export class Timeline extends Breadcrumb {
 
     return this;
   }
+
+  /**
+   * Set polyline style.
+   *
+   * @param  {object}  options
+   * @return {this}
+   */
+  setStyle(options: any): this {
+    let config = {
+      className: options.className ? options.className : ''
+    };
+
+    this.polyline.setStyle(config);
+
+    return this;
+  }
 }
