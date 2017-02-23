@@ -42,6 +42,28 @@ export class Timeline extends Breadcrumb {
   }
 
   /**
+   * Bring timeline to the back.
+   *
+   * @return {this}
+   */
+  bringToBack(): this {
+    this.polyline.bringToBack();
+
+    return this;
+  }
+
+  /**
+   * Bring timeline to the front.
+   *
+   * @return {this}
+   */
+  bringToFront(): this {
+    this.polyline.bringToFront();
+
+    return this;
+  }
+
+  /**
    * Make polyline.
    *
    * @param  {object}  options

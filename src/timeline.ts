@@ -41,4 +41,18 @@ export abstract class Timeline extends Breadcrumb {
    * @return {this}
    */
   abstract boundTo(): this;
+
+  /**
+   * Bring timeline to the back.
+   *
+   * @return {this}
+   */
+  abstract bringToBack(): this;
+
+  /**
+   * Bring timeline to the front.
+   *
+   * @return {this}
+   */
+  abstract bringToFront(): this;
 }
