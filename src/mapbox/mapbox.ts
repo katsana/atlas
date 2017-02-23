@@ -61,6 +61,16 @@ export class Mapbox extends Service {
   }
 
   /**
+   * Add feature group to canvas.
+   *
+   * @param  {Canvas} canvas
+   * @return {any}
+   */
+  newFeatureGroup(canvas: Canvas): any {
+    return L.featureGroup().addTo(Canvas.via(canvas));
+  }
+
+  /**
    * Construct new icon.
    *
    * @param {string} label

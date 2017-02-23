@@ -41,6 +41,15 @@ export abstract class Service {
    */
   abstract newCanvas(id: string, options: any): Canvas;
 
+
+  /**
+   * Add feature group to canvas.
+   *
+   * @param  {Canvas} canvas
+   * @return {any}
+   */
+  abstract newFeatureGroup(canvas: Canvas): any;
+
   /**
    * Construct new icon.
    *
