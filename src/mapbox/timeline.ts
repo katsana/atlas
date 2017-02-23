@@ -24,7 +24,10 @@ export class Timeline extends Breadcrumb {
    * @return {this}
    */
   addTo(canvas: Canvas): this {
-    this.polyline.addTo(Canvas.via(canvas));
+    let map = Canvas.via(canvas);
+
+    L.featureGroup().addTo(map).addLayer(this.polyline);
+    this.polyline.addTo(map);
 
     return this;
   }
