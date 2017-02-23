@@ -71,7 +71,9 @@ export class Timeline extends Breadcrumb {
    */
   make(options: any): any {
     let config = {
-      className: options.className ? options.className : ''
+      className: options.className ? options.className : '',
+      color: options.color ? options.color : '',
+      opacity: options.opacity ? options.opacity : ''
     };
 
     return L.polyline([], config);
@@ -97,7 +99,9 @@ export class Timeline extends Breadcrumb {
    */
   setStyle(options: any): this {
     let config = {
-      className: options.className ? options.className : ''
+      className: options.className ? options.className : '',
+      color: options.color ? options.color : '',
+      opacity: options.opacity ? options.opacity : ''
     };
 
     this.polyline.setStyle(config);
