@@ -10,7 +10,7 @@ export class Routing extends Breadcrumb {
    * @return {this}
    */
   add(position: Position): this {
-    this.polyline.addLatLng(Position.via(position));
+    this.polyline.getPath().push(Position.via(position));
 
     return super.add(position);
   }
