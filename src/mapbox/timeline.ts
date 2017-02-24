@@ -72,8 +72,8 @@ export class Timeline extends Breadcrumb {
   make(options: any): any {
     return L.polyline([], {
       className: options.className ? options.className : '',
-      color: options.color ? options.color : '',
-      opacity: options.opacity ? options.opacity : ''
+      color: options.color ? options.color : '#78ACD9',
+      opacity: options.opacity ? options.opacity : 1.0
     });
   }
 
@@ -98,8 +98,8 @@ export class Timeline extends Breadcrumb {
   setStyle(options: any): this {
     this.polyline.setStyle({
       className: options.className ? options.className : '',
-      color: options.color ? options.color : '',
-      opacity: options.opacity ? options.opacity : ''
+      color: options.color ? options.color : '#78ACD9',
+      opacity: options.opacity ? options.opacity : 1.0
     });
 
     return this;

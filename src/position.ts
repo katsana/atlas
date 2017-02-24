@@ -9,6 +9,13 @@ function to_radian(value: number): number {
 
 export abstract class Position {
   /**
+   * Position instance.
+   *
+   * @type {object}
+   */
+  protected instance: any;
+
+  /**
    * Construct a new class instance.
    *
    * @param {number} latitude
@@ -16,7 +23,7 @@ export abstract class Position {
    * @param {object} options
    */
   constructor(protected latitude: number, protected longitude: number, protected options: any = {}) {
-    //
+    this.instance = this.make();
   }
 
   /**
@@ -83,6 +90,15 @@ export abstract class Position {
   }
 
   /**
+   * Get the position.
+   *
+   * @return {object}
+   */
+  get position(): any {
+    return this.instance;
+  }
+
+  /**
    * Get position URL.
    *
    * @return {string}
@@ -91,7 +107,7 @@ export abstract class Position {
     if (! this.isValid())
       return '#'
 
-    return `http://maps.apple.com/?q=${this.latitude},${this.longitude}`
+    return `http://maps.apple.com/?q=${this.coordinate}`
   }
 
   /**
@@ -117,11 +133,9 @@ export abstract class Position {
   abstract image(dimension: string, zoom: number): string;
 
   /**
-   * Get the position.
-   *
-   * @return {object}
+   * Make a position.
    */
-  abstract get position(): any;
+  abstract make(): any;
 
   /**
    * Get the service coordinate.

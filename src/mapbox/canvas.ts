@@ -31,17 +31,15 @@ export class Canvas extends Map {
    * @param {string} id
    * @param {object} options
    */
-  make(id: string, options: any): void {
+  make(id: string, options: any = {}): void {
     let config = {
-      zoom: options.zoom ? options.zoom : 7,
+      center: options.position ? Position.via(options.position) : null,
+      attributionControl: options.attributionControl ? options.attributionControl : false,
       minZoom: options.minZoom ? options.minZoom : 7,
       trackResize: true,
-      zoomControl: false,
-      attributionControl: false
+      zoom: options.zoom ? options.zoom : 7,
+      zoomControl: false
     };
-
-    if (options.position instanceof Position)
-      config.center = Position.via(options.position);
 
     return new L.map(id, config);
   }

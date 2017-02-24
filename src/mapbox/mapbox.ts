@@ -98,12 +98,10 @@ export class Mapbox extends Service {
    * @return {Position}
    */
   newPosition(latitude: number, longitude: number): Position {
-    let options = {
+    return new Position(latitude, longitude, {
       accessToken: this.accessToken(),
       style: this.theme.active
-    };
-
-    return new Position(latitude, longitude, options);
+    });
   }
 
   /**
