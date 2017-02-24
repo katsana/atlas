@@ -12,37 +12,56 @@ export class Icon extends BaseIcon {
    * @return {this}
    */
   createBasic(position: Position, options: any = {}) {
-    let icon = L.mapbox.marker.icon({
+    this.icon = L.mapbox.marker.icon({
       'marker-size': options.size ? options.size : 'large',
       'marker-symbol': options.label ? options.label : 'car',
       'marker-color': options.color ? options.color : '#fa0'
     });
 
-    this.instance = this.make(position, icon);
-
-    return this;
+    return this.generate(position, {
+      className: options.className ? options.className : null,
+      riseOnHover: options.riseOnHover ? options.riseOnHover : false
+    });
   }
 
   /**
-   * Create a SVG avatar.
+   * Create a HTML avatar.
+   *
+   * @param {object} options
+   * @return {this}
+   */
+  createHtml(position: Position, options: any = {}) {
+    this.icon = L.divIcon({
+      className: options.className ? options.className : null,
+      html: options.html,
+      iconAnchor: options.anchor,
+      iconSize: options.size
+    });
+
+    return this.generate(position, {
+      className: options.className ? options.className : null,
+      riseOnHover: options.riseOnHover ? options.riseOnHover : false
+    });
+  }
+
+  /**
+   * Create an image avatar.
    *
    * @param {object} options
    * @return {this}
    */
   createImage(position: Position, options: any = {}) {
-    let icon = L.icon({
+    this.icon = L.icon({
       className: options.className ? options.className : null,
       iconUrl: options.url,
       iconAnchor: options.anchor,
       iconSize: options.size
     });
 
-    this.instance = this.make(position, icon, {
+    return this.generate(position, {
       className: options.className ? options.className : null,
       riseOnHover: options.riseOnHover ? options.riseOnHover : false
     });
-
-    return this;
   }
 
   /**
