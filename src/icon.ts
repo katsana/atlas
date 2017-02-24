@@ -30,19 +30,6 @@ export abstract class Icon {
   }
 
   /**
-   * Bind label to icon.
-   *
-   * @param  {string} text
-   * @param  {any}    options
-   * @return {this}
-   */
-  label(text: string, options: any): this {
-    this.instance.label(text, options).hideLabel();
-
-    return this;
-  }
-
-  /**
    * Get the marker instance.
    *
    * @return {Marker}
@@ -58,8 +45,32 @@ export abstract class Icon {
    * @param  {any}      options
    * @return {this}
    */
-  generate(position: Position, options: any): this {
+  generate(position: Position, options: any = {}): this {
     this.instance = this.make(position, this.icon, options);
+
+    return this;
+  }
+
+  /**
+   * Hide the marker.
+   *
+   * @return {this}
+   */
+  hide(): this {
+    this.instance.hide();
+
+    return this;
+  }
+
+  /**
+   * Bind label to icon.
+   *
+   * @param  {string} text
+   * @param  {any}    options
+   * @return {this}
+   */
+  label(text: string, options: any): this {
+    this.instance.label(text, options).hideLabel();
 
     return this;
   }
@@ -109,6 +120,17 @@ export abstract class Icon {
    */
   setPopupContent(content: string): this {
     this.instance.setPopupContent(content);
+
+    return this;
+  }
+
+  /**
+   * Show the marker.
+   *
+   * @return {this}
+   */
+  show(): this {
+    this.instance.show();
 
     return this;
   }

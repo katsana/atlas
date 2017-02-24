@@ -14,7 +14,11 @@ export class Marker extends BaseMarker {
    * @return {object}
    */
   make(position: any, options: any = {}) {
-    return new L.Marker(position, options);
+    return new L.Marker(position, {
+      className: options.className ? options.className : '',
+      icon: options.icon ? options.icon : new L.Icon.Default(),
+      riseOnHover: options.riseOnHover ? options.riseOnHover : true
+    });
   }
 
   /**
@@ -36,7 +40,7 @@ export class Marker extends BaseMarker {
    * @param  {object} options
    * @return {this}
    */
-  label(text: string, options: any): this {
+  label(text: string, options: any = {}): this {
     let config = {
       className: options.className ? options.className : '',
       clickable: options.clickable ? options.clickable : false,

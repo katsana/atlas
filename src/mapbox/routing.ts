@@ -51,11 +51,11 @@ export class Routing extends Breadcrumb {
    * @return {object}
    */
   make(options: any): any {
-    let config = {
-      className: options.className ? options.className : ''
-    };
-
-    return L.polyline([], config);
+    return L.polyline([], {
+      className: options.className ? options.className : '',
+      color: options.color ? options.color : '',
+      opacity: options.opacity ? options.opacity : ''
+    });
   }
 
   /**

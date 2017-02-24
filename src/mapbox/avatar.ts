@@ -14,13 +14,11 @@ export class Avatar extends BaseAvatar {
    * @return {Marker}
    */
   make(position: Position, icon: any, options: any): Marker {
-    let config = {
+    return new Marker(position, {
       className: options.className ? options.className : '',
       icon: icon,
       riseOnHover: options.riseOnHover ? options.riseOnHover : false
-    };
-
-    return new Marker(position, config);
+    });
   }
 
   /**

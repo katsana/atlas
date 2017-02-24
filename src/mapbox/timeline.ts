@@ -70,13 +70,11 @@ export class Timeline extends Breadcrumb {
    * @return {this}
    */
   make(options: any): any {
-    let config = {
+    return L.polyline([], {
       className: options.className ? options.className : '',
       color: options.color ? options.color : '',
       opacity: options.opacity ? options.opacity : ''
-    };
-
-    return L.polyline([], config);
+    });
   }
 
   /**
@@ -98,13 +96,11 @@ export class Timeline extends Breadcrumb {
    * @return {this}
    */
   setStyle(options: any): this {
-    let config = {
+    this.polyline.setStyle({
       className: options.className ? options.className : '',
       color: options.color ? options.color : '',
       opacity: options.opacity ? options.opacity : ''
-    };
-
-    this.polyline.setStyle(config);
+    });
 
     return this;
   }

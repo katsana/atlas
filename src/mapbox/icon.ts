@@ -8,16 +8,17 @@ export class Icon extends BaseIcon {
   /**
    * Create a basic avatar.
    *
-   * @param {string} label
-   * @param {string} color
-   * @param {string} size
+   * @param {object} options
+   * @return {this}
    */
-  createBasic(label: string, color: string = '#fa0', size: string = 'large') {
-    this.icon = L.mapbox.marker.icon({
-      'marker-size': size,
-      'marker-symbol': label,
-      'marker-color': color
+  createBasic(position: Position, options: any = {}) {
+    let icon = L.mapbox.marker.icon({
+      'marker-size': options.size ? options.size : 'large',
+      'marker-symbol': options.label ? options.label : 'car',
+      'marker-color': options.color ? options.color : '#fa0'
     });
+
+    this.instance = this.make(position, icon);
 
     return this;
   }
@@ -26,9 +27,22 @@ export class Icon extends BaseIcon {
    * Create a SVG avatar.
    *
    * @param {object} options
+   * @return {this}
    */
-  createSvg(options: any = {}) {
+  createImage(position: Position, options: any = {}) {
+    let icon = L.icon({
+      className: options.className ? options.className : null,
+      iconUrl: options.url,
+      iconAnchor: options.anchor,
+      iconSize: options.size
+    });
 
+    this.instance = this.make(position, icon, {
+      className: options.className ? options.className : null,
+      riseOnHover: options.riseOnHover ? options.riseOnHover : false
+    });
+
+    return this;
   }
 
   /**
@@ -39,9 +53,11 @@ export class Icon extends BaseIcon {
    * @param  {object}   options
    * @return {Marker}
    */
-  make(position: Position, icon: any, options: any): Marker {
-    options.icon = icon;
-
-    return new Marker(position, options);
+  make(position: Position, icon: any, options: any = {}): Marker {
+    return new Marker(position, {
+      className: options.className ? options.className : '',
+      icon: icon,
+      riseOnHover: options.riseOnHover ? options.riseOnHover : false
+    });
   }
 }
