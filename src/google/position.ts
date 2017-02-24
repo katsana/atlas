@@ -2,6 +2,13 @@ import { Position as Coordinate } from '../position'
 
 export class Position extends Coordinate {
   /**
+   * Make a position
+   */
+  make(): any {
+    return new google.maps.LatLng({lat: this.latitude, lng: this.longitude});
+  }
+
+  /**
    * Get the static map image for position.
    *
    * @param  {string} dimension
@@ -9,16 +16,7 @@ export class Position extends Coordinate {
    * @return {string}
    */
   image(dimension: string, zoom: number): string {
-    return `https://maps.googleapis.com/maps/api/staticmap?center=${this.serviceCoordinate}&zoom=${zoom}&size=${dimension}&markers=color:red%7Csize:mid%7C${this.serviceCoordinate}&key=${GoogleService.accessToken()}`;
-  }
-
-  /**
-   * Get the position.
-   *
-   * @return {object}
-   */
-  get position(): any {
-    return {lat: this.latitude, lng: this.longitude};
+    return `https://maps.googleapis.com/maps/api/staticmap?center=${this.serviceCoordinate}&zoom=${zoom}&size=${dimension}&markers=color:red%7Csize:mid%7C${this.serviceCoordinate}&key=${this.options.accessToken}`;
   }
 
   /**
@@ -27,6 +25,6 @@ export class Position extends Coordinate {
    * @return {string}
    */
   get serviceCoordinate(): string {
-    return this.coordinate;
+    return this.instance.toUrlValue();
   }
 }

@@ -31,7 +31,7 @@ class Atlas {
    */
   protected createDriver(service: string): Service {
     if (service == 'google') {
-      throw new Error('Not ready yet!'); // return this.registerGoogleService();
+      return this.registerGoogleService();
     } else if (service == 'mapbox') {
       return this.registerMapboxService();
     }
@@ -57,9 +57,9 @@ class Atlas {
    *
    * @return {Google}
    */
-  // private registerGoogleService(): Google {
-    // return new Google(Atlas._config.google);
-  // }
+  private registerGoogleService(): Google {
+    return new Google(Atlas._config.google);
+  }
 
   /**
    * Register mapbox service.
