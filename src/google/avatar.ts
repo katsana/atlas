@@ -2,8 +2,6 @@ import { Avatar as BaseAvatar } from '../avatar'
 import { Marker } from './marker'
 import { Position } from './position'
 
-var L = require('mapbox.js');
-
 export class Avatar extends BaseAvatar {
   /**
    * Make the marker instance.
