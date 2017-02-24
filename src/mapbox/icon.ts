@@ -2,22 +2,33 @@ import { Icon as BaseIcon } from '../icon'
 import { Marker } from './marker'
 import { Position } from './position'
 
+var L = require('mapbox.js');
+
 export class Icon extends BaseIcon {
   /**
-   * Construct a new avatar.
+   * Create a basic avatar.
    *
    * @param {string} label
    * @param {string} color
    * @param {string} size
    */
-  constructor(label: string, color: string = '#fa0', size: string = 'large') {
-    super();
-
+  createBasic(label: string, color: string = '#fa0', size: string = 'large') {
     this.icon = L.mapbox.marker.icon({
       'marker-size': size,
       'marker-symbol': label,
       'marker-color': color
-    })
+    });
+
+    return this;
+  }
+
+  /**
+   * Create a SVG avatar.
+   *
+   * @param {object} options
+   */
+  createSvg(options: any = {}) {
+
   }
 
   /**

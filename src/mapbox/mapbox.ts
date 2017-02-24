@@ -73,13 +73,10 @@ export class Mapbox extends Service {
   /**
    * Construct new icon.
    *
-   * @param {string} label
-   * @param {string} color
-   * @param {string} size
    * @return {Icon}
    */
-  newIcon(label: string, color?: string, size?: string): Icon {
-    return new Icon(label, color, size);
+  newIcon(): Icon {
+    return new Icon();
   }
 
   /**

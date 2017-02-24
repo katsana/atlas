@@ -53,12 +53,9 @@ export abstract class Service {
   /**
    * Construct new icon.
    *
-   * @param {string} label
-   * @param {string} color
-   * @param {string} size
    * @return {Icon}
    */
-  abstract newIcon(label: string, color?: string, size?: string): Icon;
+  abstract newIcon(): Icon;
 
   /**
    * Construct new marker.
