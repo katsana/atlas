@@ -1,6 +1,7 @@
 import { Icon as BaseIcon } from '../icon'
 import { Marker } from './marker'
 import { Position } from './position'
+import  './markers/custom.js'
 
 export class Icon extends BaseIcon {
   /**

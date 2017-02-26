@@ -65,6 +65,19 @@ export class Icon extends BaseIcon {
   }
 
   /**
+   * Generate the marker.
+   *
+   * @param  {Position} position
+   * @param  {any}      options
+   * @return {this}
+   */
+  generate(position: Position, options: any = {}): this {
+    this.instance = this.make(position, this.icon, options);
+
+    return this;
+  }
+
+  /**
    * Make the marker instance.
    *
    * @param  {Position} position

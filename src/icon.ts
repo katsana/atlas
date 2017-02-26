@@ -39,19 +39,6 @@ export abstract class Icon {
   }
 
   /**
-   * Generate the marker.
-   *
-   * @param  {Position} position
-   * @param  {any}      options
-   * @return {this}
-   */
-  generate(position: Position, options: any = {}): this {
-    this.instance = this.make(position, this.icon, options);
-
-    return this;
-  }
-
-  /**
    * Hide the marker.
    *
    * @return {this}
@@ -141,7 +128,7 @@ export abstract class Icon {
    * @param  {Position} position
    * @param  {object}   icon
    * @param  {object}   options
-   * @return {Marker}
+   * @return {object}
    */
-  abstract make(position: Position, icon: any, options: any): Marker;
+  abstract make(position: Position, icon: any, options: any): any;
 }
