@@ -1,7 +1,7 @@
 import { Avatar as BaseAvatar } from '../avatar'
 import { Marker } from './marker'
 import { Position } from './position'
-import  './markers/custom.js'
+import  CustomMarker from './markers/custom.js'
 
 export class Avatar extends BaseAvatar {
   /**
@@ -12,12 +12,13 @@ export class Avatar extends BaseAvatar {
    * @param  {object}   options
    * @return {Marker}
    */
-  make(position: Position, icon: any, options: any): Marker {
-    // return new Marker(position, {
-    //   className: options.className ? options.className : '',
-    //   icon: icon,
-    //   riseOnHover: options.riseOnHover ? options.riseOnHover : false
-    // });
+  make(position: Position, options: any): this {
+    this.instance = new CustomMarker(
+      Position.via(position),
+      _.extend(this.icon, options)
+    );
+
+    return this
   }
 
   /**
@@ -27,11 +28,11 @@ export class Avatar extends BaseAvatar {
    * @return {object}
    */
   makeIcon(options: any): any {
-    // return L.divIcon({
-    //   iconSize: [45, 45],
-    //   iconAnchor: [22.5, 45],
-    //   className: 'leaflet-avatar-icon',
-    //   html: `<object id="avatar-icon-${this.vehicle.id}" type="image/svg+xml" data="${options.url}"></object>`
-    // });
+    return {
+      iconSize: [45, 45],
+      iconAnchor: [22.5, 45],
+      className: 'leaflet-avatar-icon',
+      html: `<object id="avatar-icon-${this.vehicle.id}" type="image/svg+xml" data="${options.url}"></object>`
+    };
   }
 }

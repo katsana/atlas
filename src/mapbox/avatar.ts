@@ -9,16 +9,17 @@ export class Avatar extends BaseAvatar {
    * Make the marker instance.
    *
    * @param  {Position} position
-   * @param  {object}   icon
    * @param  {object}   options
    * @return {Marker}
    */
-  make(position: Position, icon: any, options: any): Marker {
-    return new Marker(position, {
+  make(position: Position, options: any): this {
+    this.instance = new Marker(position, {
       className: options.className ? options.className : '',
-      icon: icon,
+      icon: this.icon,
       riseOnHover: options.riseOnHover ? options.riseOnHover : false
     });
+
+    return this;
   }
 
   /**

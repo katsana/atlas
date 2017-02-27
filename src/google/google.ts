@@ -5,7 +5,7 @@ import { Marker } from './marker'
 import { Position } from './position'
 import { Routing } from './routing'
 import { Service } from '../service'
-import { Timeline } from '../timeline'
+import { Timeline } from './timeline'
 
 export class Google extends Service {
   /**

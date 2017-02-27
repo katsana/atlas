@@ -12,11 +12,15 @@ export class Marker extends BaseMarker {
    * @param  {object} options
    * @return {object}
    */
-  make(position: any, options: any = {}) {
-    return new google.maps.Marker(position, {
+  make(position: any, options: any = {}): any {
+    let marker = new google.maps.Marker({
       icon: options.icon ? options.icon : ''
       //riseOnHover: options.riseOnHover ? options.riseOnHover : true
     });
+
+    marker.setPosition(Position.via(position));
+
+    return marker;
   }
 
   /**
@@ -39,23 +43,9 @@ export class Marker extends BaseMarker {
    * @return {this}
    */
   label(text: string, options: any = {}): this {
-    // let config = {
-    //   className: options.className ? options.className : '',
-    //   clickable: options.clickable ? options.clickable : false,
-    //   noHide: false
-    // });
-
-    // if (_.isFunction(this.instance.bindLabel)) {
-    //   this.instance.bindLabel(text, config)
-    //     .on('mouseover', (e) => {
-    //       if (!this.forceShown)
-    //         this.showLabel();
-    //     })
-    //     .on('mouseout', (e) => {
-    //       if (!this.forceShown)
-    //         this.hideLabel();
-    //     });
-    // }
+    this.instance.setLabel({
+      text
+    });
 
     return this;
   }

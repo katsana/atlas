@@ -54,19 +54,15 @@ export class Icon extends BaseIcon {
    * @return {this}
    */
   createImage(position: Position, options: any = {}) {
-    // this.icon = L.icon({
-    //   className: options.className ? options.className : null,
-    //   iconUrl: options.url,
-    //   iconAnchor: options.anchor,
-    //   iconSize: options.size
-    // });
+    this.icon = {
+      anchor: new google.maps.Point(options.anchor[0], options.anchor[1]),
+      size: new google.maps.Size(options.size[0], options.size[1]),
+      url: options.url
+    };
 
-    // return this.generate(position, {
-    //   className: options.className ? options.className : null,
+    return this.make(position, {
     //   riseOnHover: options.riseOnHover ? options.riseOnHover : false
-    // });
-
-    return this;
+    });
   }
 
   /**
@@ -77,11 +73,11 @@ export class Icon extends BaseIcon {
    * @param  {object}   options
    * @return {Marker}
    */
-  make(position: Position, icon: any, options: any = {}): Marker {
-    // return new Marker(position, {
-    //   className: options.className ? options.className : '',
-    //   icon: icon,
-    //   riseOnHover: options.riseOnHover ? options.riseOnHover : false
-    // });
+  make(position: Position, options: any = {}): this {
+    this.instance = new Marker(position, {
+      icon: this.icon
+    });
+
+    return this;
   }
 }

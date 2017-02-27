@@ -13,9 +13,9 @@ export abstract class Icon {
   /**
    * The icon instance.
    *
-   * @type {Marker}
+   * @type {Marker|any}
    */
-  protected instance: Marker;
+  protected instance: Marker|any;
 
   /**
    * Add icon to canvas.
@@ -126,9 +126,8 @@ export abstract class Icon {
    * Make the marker instance.
    *
    * @param  {Position} position
-   * @param  {object}   icon
    * @param  {object}   options
-   * @return {object}
+   * @return {this}
    */
-  abstract make(position: Position, icon: any, options: any): any;
+  abstract make(position: Position, options: any): this;
 }

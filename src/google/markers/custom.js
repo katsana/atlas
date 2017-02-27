@@ -1,6 +1,5 @@
-function CustomMarker(coordinate, html, options) {
+function CustomMarker(coordinate, options) {
   this.coordinate = coordinate;
-  this.html = html;
   this.options = options;
 }
 
@@ -22,7 +21,7 @@ CustomMarker.prototype.draw = function() {
     div.style.cursor = 'pointer';
     div.style.width = `${this.options.iconSize[0]}px`;
     div.style.height = `${this.options.iconSize[1]}px`;
-    div.innerHtml = this.html;
+    div.innerHtml = this.options.html;
 
     google.maps.event.addDomListener(div, "click", function(event) {
       google.maps.event.trigger(self, "click");
@@ -50,3 +49,18 @@ CustomMarker.prototype.remove = function() {
 CustomMarker.prototype.getPosition = function() {
   return this.coordinate;
 };
+
+CustomMarker.prototype.label = function(text, options) {
+  return this;
+}
+
+CustomMarker.prototype.hideLabel = function() {
+  return this;
+}
+
+
+CustomMarker.prototype.showLabel = function() {
+  return this;
+}
+
+export default CustomMarker

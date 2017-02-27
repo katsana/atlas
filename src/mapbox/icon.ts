@@ -18,7 +18,7 @@ export class Icon extends BaseIcon {
       'marker-color': options.color ? options.color : '#fa0'
     });
 
-    return this.generate(position, {
+    return this.make(position, {
       className: options.className ? options.className : null,
       riseOnHover: options.riseOnHover ? options.riseOnHover : false
     });
@@ -38,7 +38,7 @@ export class Icon extends BaseIcon {
       iconSize: options.size
     });
 
-    return this.generate(position, {
+    return this.make(position, {
       className: options.className ? options.className : null,
       riseOnHover: options.riseOnHover ? options.riseOnHover : false
     });
@@ -58,23 +58,10 @@ export class Icon extends BaseIcon {
       iconSize: options.size
     });
 
-    return this.generate(position, {
+    return this.make(position, {
       className: options.className ? options.className : null,
       riseOnHover: options.riseOnHover ? options.riseOnHover : false
     });
-  }
-
-  /**
-   * Generate the marker.
-   *
-   * @param  {Position} position
-   * @param  {any}      options
-   * @return {this}
-   */
-  generate(position: Position, options: any = {}): this {
-    this.instance = this.make(position, this.icon, options);
-
-    return this;
   }
 
   /**
@@ -85,11 +72,13 @@ export class Icon extends BaseIcon {
    * @param  {object}   options
    * @return {Marker}
    */
-  make(position: Position, icon: any, options: any = {}): Marker {
-    return new Marker(position, {
+  make(position: Position, options: any = {}): this {
+    this.instance = new Marker(position, {
       className: options.className ? options.className : '',
-      icon: icon,
+      icon: this.icon,
       riseOnHover: options.riseOnHover ? options.riseOnHover : false
     });
+
+    return this;
   }
 }
