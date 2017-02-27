@@ -9,6 +9,7 @@ export class Timeline extends Breadcrumb {
    * @type {any}
    */
   protected boundaries: any;
+
   /**
    * Construct a new class.
    *
@@ -21,15 +22,12 @@ export class Timeline extends Breadcrumb {
   }
 
   /**
-   * Add new position.
+   * Add path to breadcrumb.
    *
    * @param {Position} position
-   * @return {this}
    */
-  add(position: Position): this {
+  addPath(position: Position) {
     this.polyline.getPath().push(Position.via(position));
-
-    return super.add(position);
   }
 
   /**

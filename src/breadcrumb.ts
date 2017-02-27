@@ -43,7 +43,8 @@ export abstract class Breadcrumb {
    */
   add(position: Position): this {
     this.position = position;
-    this.polyline.addLatLng(Position.via(position));
+
+    this.addPath(position);
     this.centerTo(position);
 
     return this;
@@ -103,6 +104,13 @@ export abstract class Breadcrumb {
   get(): any {
     return this.polyline;
   }
+
+  /**
+   * Add path to breadcrumb.
+   *
+   * @param {Position} position
+   */
+  abstract addPath(position: Position);
 
   /**
    * Add polyline to canvas.

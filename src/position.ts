@@ -67,7 +67,7 @@ export abstract class Position {
    * @return {boolean}
    */
   isValid(): boolean {
-    return (this.latitude == null || this.longitude == null) !== true
+    return (this.latitude == null || this.longitude == null) != true
   }
 
   /**
@@ -77,7 +77,7 @@ export abstract class Position {
    */
   get(): any {
     if (this.isValid())
-      return this.position
+      return this.instance
   }
 
   /**

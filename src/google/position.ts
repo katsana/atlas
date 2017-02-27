@@ -5,7 +5,8 @@ export class Position extends Coordinate {
    * Make a position
    */
   make(): any {
-    return new google.maps.LatLng({lat: this.latitude, lng: this.longitude});
+    console.log(this.latitude, this.longitude);
+    return new google.maps.LatLng(this.latitude, this.longitude);
   }
 
   /**

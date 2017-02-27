@@ -4,15 +4,12 @@ import { Routing as Breadcrumb } from '../routing'
 
 export class Routing extends Breadcrumb {
   /**
-   * Add new position.
+   * Add path to breadcrumb.
    *
    * @param {Position} position
-   * @return {this}
    */
-  add(position: Position): this {
+  addPath(position: Position) {
     this.polyline.getPath().push(Position.via(position));
-
-    return super.add(position);
   }
 
   /**
