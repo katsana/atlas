@@ -91,8 +91,8 @@ CustomMarker.prototype.setPosition = function(coordinate) {
   var point = this.getProjection().fromLatLngToDivPixel(coordinate);
 
   if (point) {
-    this.div.style.left = (point.x - this.options.size[0]) + 'px';
-    this.div.style.top = (point.y - this.options.size[1]) + 'px';
+    this.div.style.left = (point.x - this.options.size[0] + this.options.anchor[0]) + 'px';
+    this.div.style.top = (point.y - this.options.size[1] + this.options.anchor[1]) + 'px';
   }
 
   return this;
