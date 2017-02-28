@@ -43,7 +43,7 @@ CustomMarker.prototype.draw = function() {
   if (!div) {
     div = this.div = document.createElement('div');
 
-    if (this.options.className != undefined) {
+    if (this.options.className != null) {
       div.className = this.options.className;
     }
 

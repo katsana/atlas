@@ -50,6 +50,7 @@ export class Icon extends BaseIcon {
   createHtml(position: Position, options: any = {}) {
     this.instance = new CustomMarker(Position.via(position), {
       anchor: options.anchor,
+      className: options.className ? options.className : null,
       html: options.html,
       size: options.size
     });
@@ -64,9 +65,12 @@ export class Icon extends BaseIcon {
    * @return {this}
    */
   createImage(position: Position, options: any = {}) {
+    let size = new google.maps.Size(options.size[0], options.size[1]);
+
     this.icon = {
       anchor: new google.maps.Point(options.anchor[0], options.anchor[1]),
-      size: new google.maps.Size(options.size[0], options.size[1]),
+      size: size,
+      scaledSize: size,
       url: options.url
     };
 
