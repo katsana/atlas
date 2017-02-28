@@ -48,7 +48,13 @@ export class Timeline extends Breadcrumb {
    * @return {this}
    */
   boundTo(): this {
-    // @TODO build boundaries.
+    let boundaries = new google.maps.LatLngBounds();
+
+    this.polyline.getPath().forEach((item, index) => {
+      boundaries.extend(new google.maps.LatLng(item.lat(), item.lng()));
+    });
+
+    this.canvas.boundTo(boundaries);
 
     return this;
   }
