@@ -13,6 +13,20 @@ export class Icon extends BaseIcon {
   protected _label: any;
 
   /**
+   * Show the label status.
+   *
+   * @type {boolean}
+   */
+  protected labelShown: boolean = false;
+
+  /**
+   * Force show the label status.
+   *
+   * @type {boolean}
+   */
+  protected forceShown: boolean = false;
+
+  /**
    * Add icon to canvas.
    *
    * @param  {Canvas} canvas
@@ -93,8 +107,10 @@ export class Icon extends BaseIcon {
    * @return {this}
    */
   hideLabel(): this {
-    if (this._label)
+    if (this._label) {
+      this.labelShown = false;
       this._label.hide();
+    }
 
     return this;
   }
@@ -123,11 +139,13 @@ export class Icon extends BaseIcon {
     this._label.setMap(marker.getMap());
 
     google.maps.event.addListener(marker, 'mouseover', () => {
-      this.showLabel();
+      if (!this.forceShown)
+        this.showLabel();
     });
 
     google.maps.event.addListener(marker, 'mouseout', () => {
-      this.hideLabel();
+      if (!this.forceShown)
+        this.hideLabel();
     });
 
     return this;
@@ -155,8 +173,35 @@ export class Icon extends BaseIcon {
    * @return {this}
    */
   showLabel(): this {
-    if (this._label)
+    if (this._label) {
+      this.labelShown = true;
       this._label.show();
+    }
+
+    return this;
+  }
+
+  /**
+   * Toggle force show label.
+   *
+   * @return {this}
+   */
+  toggleForceLabel(): this {
+    this.forceShown = !this.forceShown;
+
+    return this;
+  }
+
+  /**
+   * Toggle show label.
+   *
+   * @return {this}
+   */
+  toggleLabel(): this {
+    if (this.labelShown)
+      this.hideLabel();
+    else
+      this.showLabel();
 
     return this;
   }
