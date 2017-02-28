@@ -116,8 +116,9 @@ export class Timeline extends Breadcrumb {
    */
   setStyle(options: any): this {
     this.polyline.setOptions({
-      color: options.color ? options.color : '#78ACD9',
-      opacity: options.opacity ? options.opacity : 1.0
+      strokeColor: options.color ? options.color : '#78ACD9',
+      strokeOpacity: options.opacity ? options.opacity : 1.0,
+      strokeWeight: options.weight ? options.weight : 7
     });
 
     return this;

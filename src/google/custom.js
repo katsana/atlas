@@ -48,6 +48,7 @@ CustomMarker.prototype.draw = function() {
     }
 
     div.style.position = 'absolute';
+    div.style.display = 'block';
     div.style.cursor = 'pointer';
     div.style.width = `${this.options.size[0]}px`;
     div.style.height = `${this.options.size[1]}px`;
@@ -107,6 +108,19 @@ CustomMarker.prototype.label = function(text, options) {
 
   return this;
 };
+
+CustomMarker.prototype.hide = function () {
+  this.div.style.display = 'none';
+
+  return this;
+}
+
+CustomMarker.prototype.show = function () {
+  this.div.style.display = 'block';
+
+  return this;
+}
+
 
 CustomMarker.prototype.hideLabel = function() {
   return this;
