@@ -1,9 +1,25 @@
+import { Canvas } from './canvas'
 import { Icon as BaseIcon } from '../icon'
 import { Marker } from './marker'
 import { Position } from './position'
-import  './markers/custom.js'
+import { CustomMarker } from './custom.js'
 
 export class Icon extends BaseIcon {
+  /**
+   * Add icon to canvas.
+   *
+   * @param  {Canvas} canvas
+   * @return {this}
+   */
+  addTo(canvas: Canvas): this {
+    if (this.instance instanceof Marker)
+      this.instance.addTo(canvas);
+    else
+      this.instance.setMap(Canvas.via(canvas));
+
+    return this;
+  }
+
   /**
    * Create a basic avatar.
    *
@@ -32,17 +48,13 @@ export class Icon extends BaseIcon {
    * @return {this}
    */
   createHtml(position: Position, options: any = {}) {
-    // this.icon = L.divIcon({
-    //   className: options.className ? options.className : null,
-    //   html: options.html,
-    //   iconAnchor: options.anchor,
-    //   iconSize: options.size
-    // });
+    this.instance = new CustomMarker(Position.via(position), {
+      anchor: options.anchor,
+      html: options.html,
+      size: options.size
+    });
 
-    // return this.generate(position, {
-    //   className: options.className ? options.className : null,
-    //   riseOnHover: options.riseOnHover ? options.riseOnHover : false
-    // });
+    console.log(this.instance);
 
     return this;
   }
