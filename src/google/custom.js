@@ -12,8 +12,8 @@ CustomLabel.prototype.draw = function() {
   var text = String(this.get('text'));
   var position = this.getProjection().fromLatLngToDivPixel(this.get('position'));
   this.span.innerHTML = text;
-  this.span.style.left = (position.x - (markerSize.x / 2)) - (text.length * 3) + 10 + 'px';
-  this.span.style.top = (position.y - markerSize.y + 40) + 'px';
+  this.span.style.left = (position.x - (this.get('marker').options.size[0] / 2)) + 10 + 'px';
+  this.span.style.top = (position.y - (this.get('marker').options.size[1] / 2)) + 40) + 'px';
 };
 
 CustomLabel.prototype.onAdd = function () {
