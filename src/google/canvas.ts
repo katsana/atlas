@@ -37,7 +37,12 @@ export class Canvas extends Map {
   boundTo(bounds: any): this {
     return this.pipe(function(map) {
       map.fitBounds(bounds);
-      //map.setZoom(Math.min(map.getBoundsZoom(bounds), 16));
+
+      let zoom = map.getZoom() ? map.getZoom() : 9;
+      if (zoom < 10)
+        zoom = 16;
+
+      map.setZoom(zoom);
     });
   }
 
