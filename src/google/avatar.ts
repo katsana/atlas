@@ -42,8 +42,8 @@ export class Avatar extends BaseAvatar {
    */
   makeIcon(options: any): any {
     return {
-      iconSize: [45, 45],
-      iconAnchor: [22.5, 45],
+      anchor: [22.5, 45],
+      size: [45, 45],
       className: 'leaflet-avatar-icon',
       html: `<object id="avatar-icon-${this.vehicle.id}" type="image/svg+xml" data="${options.url}"></object>`
     };

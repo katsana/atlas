@@ -49,8 +49,8 @@ CustomMarker.prototype.draw = function() {
 
     div.style.position = 'absolute';
     div.style.cursor = 'pointer';
-    div.style.width = `${this.options.iconSize[0]}px`;
-    div.style.height = `${this.options.iconSize[1]}px`;
+    div.style.width = `${this.options.size[0]}px`;
+    div.style.height = `${this.options.size[1]}px`;
     div.innerHTML = this.options.html;
 
     google.maps.event.addDomListener(div, "click", function(event) {
@@ -91,8 +91,8 @@ CustomMarker.prototype.setPosition = function(coordinate) {
   var point = this.getProjection().fromLatLngToDivPixel(coordinate);
 
   if (point) {
-    this.div.style.left = (point.x - this.options.iconSize[0]) + 'px';
-    this.div.style.top = (point.y - this.options.iconSize[1]) + 'px';
+    this.div.style.left = (point.x - this.options.size[0]) + 'px';
+    this.div.style.top = (point.y - this.options.size[1]) + 'px';
   }
 
   return this;
