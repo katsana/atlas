@@ -1,10 +1,18 @@
 import { Canvas } from './canvas'
 import { Marker as BaseMarker } from '../marker'
 import { Position } from './position'
+import { CustomLabel } from './custom.js'
 
 var _ = require('underscore');
 
 export class Marker extends BaseMarker {
+  /**
+   * Custom label instance.
+   *
+   * @type {object}
+   */
+  protected _label: any;
+
   /**
    * Make a marker.
    *
@@ -43,8 +51,24 @@ export class Marker extends BaseMarker {
    * @return {this}
    */
   label(text: string, options: any = {}): this {
-    this.instance.setLabel({
-      text
+    let marker = this.instance.get();
+
+    this._label = new CustomLabel({
+      marker,
+      text,
+      className: 'leaflet-label'
+    });
+
+    this._label.setMap(marker.getMap());
+
+    google.maps.event.addListener(marker, 'mouseover', () => {
+      if (!this.forceShown)
+        this.showLabel();
+    });
+
+    google.maps.event.addListener(marker, 'mouseout', () => {
+      if (!this.forceShown)
+        this.hideLabel();
     });
 
     return this;
@@ -67,8 +91,10 @@ export class Marker extends BaseMarker {
    * @return {this}
    */
   hideLabel(): this {
-    // this.instance.hideLabel();
-    this.labelShown = !this.labelShown;
+    if (this._label) {
+      this.labelShown = false;
+      this._label.hide();
+    }
 
     return this;
   }
@@ -127,8 +153,10 @@ export class Marker extends BaseMarker {
    * @return {this}
    */
   showLabel(): this {
-    // this.instance.showLabel();
-    this.labelShown = !this.labelShown;
+    if (this._label) {
+      this.labelShown = true;
+      this._label.show();
+    }
 
     return this;
   }
@@ -151,6 +179,31 @@ export class Marker extends BaseMarker {
    */
   setPopupContent(content: string): this {
     // this.instance.setPopupContent(content);
+
+    return this;
+  }
+
+  /**
+   * Toggle force show label.
+   *
+   * @return {this}
+   */
+  toggleForceLabel(): this {
+    this.forceShown = !this.forceShown;
+
+    return this;
+  }
+
+  /**
+   * Toggle show label.
+   *
+   * @return {this}
+   */
+  toggleLabel(): this {
+    if (this.labelShown)
+      this.hideLabel();
+    else
+      this.showLabel();
 
     return this;
   }
