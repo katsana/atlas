@@ -5,6 +5,21 @@ import { Position } from './position'
 import { CustomMarker, CustomLabel } from './custom.js'
 
 export class Avatar extends BaseAvatar {
+
+  /**
+   * Show the label status.
+   *
+   * @type {boolean}
+   */
+  protected labelShown: boolean = false;
+
+  /**
+   * Force show the label status.
+   *
+   * @type {boolean}
+   */
+  protected forceShown: boolean = false;
+
   /**
    * Custom label instance.
    *
@@ -30,8 +45,10 @@ export class Avatar extends BaseAvatar {
    * @return {this}
    */
   hideLabel(): this {
-    if (this._label)
+    if (this._label) {
+      this.labelShown = false;
       this._label.hide();
+    }
 
     return this;
   }
@@ -53,11 +70,13 @@ export class Avatar extends BaseAvatar {
     this._label.setMap(this.instance.getMap());
 
     google.maps.event.addListener(this.instance, 'mouseover', () => {
-      this.showLabel();
+      if (!this.forceShown)
+        this.showLabel();
     });
 
     google.maps.event.addListener(this.instance, 'mouseout', () => {
-      this.hideLabel();
+      if (!this.forceShown)
+        this.hideLabel();
     });
 
     return this;
@@ -101,8 +120,35 @@ export class Avatar extends BaseAvatar {
    * @return {this}
    */
   showLabel(): this {
-    if (this._label)
+    if (this._label) {
+      this.labelShown = true;
       this._label.show();
+    }
+
+    return this;
+  }
+
+  /**
+   * Toggle force show label.
+   *
+   * @return {this}
+   */
+  toggleForceLabel(): this {
+    this.forceShown = !this.forceShown;
+
+    return this;
+  }
+
+  /**
+   * Toggle show label.
+   *
+   * @return {this}
+   */
+  toggleLabel(): this {
+    if (this.labelShown)
+      this.hideLabel();
+    else
+      this.showLabel();
 
     return this;
   }
