@@ -65,7 +65,7 @@ export class Timeline extends Breadcrumb {
    * @return {this}
    */
   bringToBack(): this {
-    this.polyline.setVisible(false);
+    //this.polyline.setVisible(false);
 
     return this;
   }
@@ -76,7 +76,7 @@ export class Timeline extends Breadcrumb {
    * @return {this}
    */
   bringToFront(): this {
-    this.polyline.setVisible(true);
+    //this.polyline.setVisible(true);
 
     return this;
   }
