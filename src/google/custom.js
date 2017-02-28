@@ -2,42 +2,69 @@ var markerSize = { x: 22, y: 40 };
 
 function CustomLabel(options) {
   this.setValues(options);
-  this.span = document.createElement('span');
-  this.span.className = 'map-marker-label';
 };
 
 CustomLabel.prototype = new google.maps.OverlayView();
 
 CustomLabel.prototype.draw = function() {
-  var text = String(this.get('text'));
-  var position = this.getProjection().fromLatLngToDivPixel(this.get('position'));
-  this.span.innerHTML = text;
-  this.span.style.left = (position.x - (this.get('marker').options.size[0] / 2)) + 10 + 'px';
-  this.span.style.top = (position.y - (this.get('marker').options.size[1] / 2)) + 40) + 'px';
+  var span = this.span;
+
+  if (!span) {
+    span = this.span = document.createElement('span');
+    span.className = this.get('className');
+    span.style.display = 'none';
+    span.style.position = 'absolute';
+
+    this.getPanes().overlayImage.appendChild(span);
+  }
+
+  span.innerHTML = String(this.get('text'));
+
+  this.setPosition(this.get('marker').getPosition());
 };
 
-CustomLabel.prototype.onAdd = function () {
-  var self = this;
-
-  this.getPanes().overlayImage.appendChild(this.span);
+CustomLabel.prototype.onAdd = function() {
   this.listeners = [
-    google.maps.event.addListener(this, 'position_changed', function() {
-      self.draw();
+    google.maps.event.addListener(this, 'position_changed', () => {
+      this.draw();
     })
   ];
 };
 
+CustomLabel.prototype.setPosition = function(coordinate) {
+  var point;
+
+
+  if (this.get('marker').getProjection != undefined) {
+    point = this.get('marker').getProjection().fromLatLngToDivPixel(coordinate);
+  } else if (this.getProjection != undefined) {
+    point = this.getProjection().fromLatLngToDivPixel(coordinate);
+  } else {
+    return ;
+  }
+
+  if (point && this.span != null) {
+    this.span.style.left = point.x + 'px';
+    this.span.style.top = point.y + 'px';
+  }
+};
+
+CustomLabel.prototype.hide = function() {
+  this.span.style.display = 'none';
+};
+
+CustomLabel.prototype.show = function() {
+  this.span.style.display = 'block';
+}
+
 function CustomMarker(coordinate, options) {
   this.coordinate = coordinate;
   this.options = options;
-  this.label = null;
 };
 
 CustomMarker.prototype = new google.maps.OverlayView();
 
 CustomMarker.prototype.draw = function() {
-  var self = this;
-
   var div = this.div;
 
   if (!div) {
@@ -54,12 +81,19 @@ CustomMarker.prototype.draw = function() {
     div.style.height = `${this.options.size[1]}px`;
     div.innerHTML = this.options.html;
 
-    google.maps.event.addDomListener(div, "click", function(event) {
-      google.maps.event.trigger(self, "click");
+    google.maps.event.addDomListener(div, "click", (event) => {
+      google.maps.event.trigger(this, "click");
     });
 
-    var panes = this.getPanes();
-    panes.overlayImage.appendChild(div);
+    google.maps.event.addDomListener(div, "mouseenter", (event) => {
+      google.maps.event.trigger(this, "mouseover");
+    });
+
+    google.maps.event.addDomListener(div, "mouseout", (event) => {
+      google.maps.event.trigger(this, "mouseout");
+    });
+
+    this.getPanes().overlayImage.appendChild(div);
   }
 
   this.setPosition(this.coordinate);
@@ -91,42 +125,22 @@ CustomMarker.prototype.setPosition = function(coordinate) {
 
   var point = this.getProjection().fromLatLngToDivPixel(coordinate);
 
-  if (point) {
+  if (point && this.div != null) {
     this.div.style.left = (point.x - this.options.anchor[0]) + 'px';
     this.div.style.top = (point.y - this.options.anchor[1]) + 'px';
   }
-
-  return this;
 };
 
-CustomMarker.prototype.label = function(text, options) {
-  this.label = new CustomLabel({
-    map: this.map,
-    marker: this,
-    text: label
-  });
-
-  return this;
-};
 
 CustomMarker.prototype.hide = function () {
   this.div.style.display = 'none';
 
   return this;
-}
+};
 
 CustomMarker.prototype.show = function () {
   this.div.style.display = 'block';
 
-  return this;
-}
-
-
-CustomMarker.prototype.hideLabel = function() {
-  return this;
-};
-
-CustomMarker.prototype.showLabel = function() {
   return this;
 };
 

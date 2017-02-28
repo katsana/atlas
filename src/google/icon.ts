@@ -2,9 +2,16 @@ import { Canvas } from './canvas'
 import { Icon as BaseIcon } from '../icon'
 import { Marker } from './marker'
 import { Position } from './position'
-import { CustomMarker } from './custom.js'
+import { CustomMarker, CustomLabel } from './custom.js'
 
 export class Icon extends BaseIcon {
+  /**
+   * Custom label instance.
+   *
+   * @type {object}
+   */
+  protected _label: any;
+
   /**
    * Add icon to canvas.
    *
@@ -65,11 +72,12 @@ export class Icon extends BaseIcon {
    * @return {this}
    */
   createImage(position: Position, options: any = {}) {
+    let anchor = new google.maps.Point(options.anchor[0], options.anchor[1]);
     let size = new google.maps.Size(options.size[0], options.size[1]);
 
     this.icon = {
-      anchor: new google.maps.Point(options.anchor[0], options.anchor[1]),
-      size: size,
+      anchor,
+      size,
       scaledSize: size,
       url: options.url
     };
@@ -77,6 +85,52 @@ export class Icon extends BaseIcon {
     return this.make(position, {
     //   riseOnHover: options.riseOnHover ? options.riseOnHover : false
     });
+  }
+
+  /**
+   * Hide the label.
+   *
+   * @return {this}
+   */
+  hideLabel(): this {
+    if (this._label)
+      this._label.hide();
+
+    return this;
+  }
+
+  /**
+   * Bind label to icon.
+   *
+   * @param  {string} text
+   * @param  {any}    options
+   * @return {this}
+   */
+  label(text: string, options: any): this {
+    let marker;
+
+    if (this.instance instanceof Marker)
+      marker = this.instance.get();
+    else
+      marker = this.instance;
+
+    this._label = new CustomLabel({
+      marker,
+      text,
+      className: 'leaflet-label'
+    });
+
+    this._label.setMap(marker.getMap());
+
+    google.maps.event.addListener(marker, 'mouseover', () => {
+      this.showLabel();
+    });
+
+    google.maps.event.addListener(marker, 'mouseout', () => {
+      this.hideLabel();
+    });
+
+    return this;
   }
 
   /**
@@ -91,6 +145,18 @@ export class Icon extends BaseIcon {
     this.instance = new Marker(position, {
       icon: this.icon
     });
+
+    return this;
+  }
+
+  /**
+   * Show the label.
+   *
+   * @return {this}
+   */
+  showLabel(): this {
+    if (this._label)
+      this._label.show();
 
     return this;
   }

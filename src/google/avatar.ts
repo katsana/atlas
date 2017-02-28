@@ -2,9 +2,16 @@ import { Canvas } from './canvas'
 import { Avatar as BaseAvatar } from '../avatar'
 import { Marker } from './marker'
 import { Position } from './position'
-import { CustomMarker } from './custom.js'
+import { CustomMarker, CustomLabel } from './custom.js'
 
 export class Avatar extends BaseAvatar {
+  /**
+   * Custom label instance.
+   *
+   * @type {object}
+   */
+  protected _label: any;
+
   /**
    * Add icon to canvas.
    *
@@ -13,6 +20,45 @@ export class Avatar extends BaseAvatar {
    */
   addTo(canvas: Canvas): this {
     this.instance.setMap(Canvas.via(canvas));
+
+    return this;
+  }
+
+  /**
+   * Hide the label.
+   *
+   * @return {this}
+   */
+  hideLabel(): this {
+    if (this._label)
+      this._label.hide();
+
+    return this;
+  }
+
+  /**
+   * Bind label to icon.
+   *
+   * @param  {string} text
+   * @param  {any}    options
+   * @return {this}
+   */
+  label(text: string, options: any): this {
+    this._label = new CustomLabel({
+      marker: this.instance,
+      text,
+      className: 'leaflet-label'
+    });
+
+    this._label.setMap(this.instance.getMap());
+
+    google.maps.event.addListener(this.instance, 'mouseover', () => {
+      this.showLabel();
+    });
+
+    google.maps.event.addListener(this.instance, 'mouseout', () => {
+      this.hideLabel();
+    });
 
     return this;
   }
@@ -47,5 +93,17 @@ export class Avatar extends BaseAvatar {
       className: 'leaflet-avatar-icon',
       html: `<object id="avatar-icon-${this.vehicle.id}" type="image/svg+xml" data="${options.url}"></object>`
     };
+  }
+
+  /**
+   * Show the label.
+   *
+   * @return {this}
+   */
+  showLabel(): this {
+    if (this._label)
+      this._label.show();
+
+    return this;
   }
 }

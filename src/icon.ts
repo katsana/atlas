@@ -32,9 +32,9 @@ export abstract class Icon {
   /**
    * Get the marker instance.
    *
-   * @return {Marker}
+   * @return {Marker|any}
    */
-  get(): Marker {
+  get(): Marker|any {
     return this.instance
   }
 
