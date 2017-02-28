@@ -54,8 +54,6 @@ export class Icon extends BaseIcon {
       size: options.size
     });
 
-    console.log(this.instance);
-
     return this;
   }
 

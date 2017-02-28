@@ -85,7 +85,6 @@ CustomMarker.prototype.setPosition = function(coordinate) {
   this.coordinate = coordinate;
 
   if (this.getProjection() == undefined) {
-    console.log('getProjection is null');
     return;
   }
 

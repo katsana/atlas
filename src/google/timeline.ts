@@ -83,8 +83,9 @@ export class Timeline extends Breadcrumb {
    */
   make(options: any): any {
     return new google.maps.Polyline({
-      color: options.color ? options.color : '#78ACD9',
-      opacity: options.opacity ? options.opacity : 1.0
+      strokeColor: options.color ? options.color : '#78ACD9',
+      strokeOpacity: options.opacity ? options.opacity : 1.0,
+      strokeWeight: options.weight ? options.weight : 7
     });
   }
 

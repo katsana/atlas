@@ -1,5 +1,6 @@
 import { Avatar } from './avatar'
 import { Canvas } from './canvas'
+import { Group } from './group'
 import { Icon } from './icon'
 import { Marker } from './marker'
 import { Position } from './position'
@@ -46,7 +47,7 @@ export class Google extends Service {
    * @return {any}
    */
   newFeatureGroup(canvas: Canvas): any {
-    //return L.featureGroup().addTo(Canvas.via(canvas));
+    return new Group(canvas);
   }
 
   /**

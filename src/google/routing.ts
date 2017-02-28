@@ -48,7 +48,8 @@ export class Routing extends Breadcrumb {
   make(options: any): any {
     return new google.maps.Polyline({
       strokeColor: options.color ? options.color : '#78ACD9',
-      strokeOpacity: options.opacity ? options.opacity : 1.0
+      strokeOpacity: options.opacity ? options.opacity : 1.0,
+      strokeWeight: options.weight ? options.weight : 7
     });
   }
 
