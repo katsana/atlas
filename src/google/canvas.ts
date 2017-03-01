@@ -26,7 +26,7 @@ export class Canvas extends Map {
       mapTypeControlOptions: {
         style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
         mapTypeIds: ['roadmap', 'satellite'],
-        position: google.maps.ControlPosition.RIGHT_RIGHT
+        position: google.maps.ControlPosition.RIGHT_TOP
       },
       minZoom: options.minZoom ? options.minZoom : 7
     };
