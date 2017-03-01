@@ -1,10 +1,11 @@
 import { Canvas } from './canvas'
 import { Avatar as BaseAvatar } from '../avatar'
+import { LabelContract } from '../contracts/label'
 import { Marker } from './marker'
 import { Position } from './position'
 import { CustomMarker, CustomLabel } from './custom.js'
 
-export class Avatar extends BaseAvatar {
+export class Avatar extends BaseAvatar implements LabelContract {
 
   /**
    * Show the label status.
@@ -40,7 +41,7 @@ export class Avatar extends BaseAvatar {
   }
 
   /**
-   * Hide the label.
+   * Hide the marker label.
    *
    * @return {this}
    */
@@ -115,7 +116,7 @@ export class Avatar extends BaseAvatar {
   }
 
   /**
-   * Show the label.
+   * Show the marker label.
    *
    * @return {this}
    */

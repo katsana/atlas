@@ -1,11 +1,12 @@
 import { Canvas } from './canvas'
+import { LabelContract } from '../contracts/label'
 import { Marker as BaseMarker } from '../marker'
 import { Position } from './position'
 
 var L = require('mapbox.js');
 var _ = require('underscore');
 
-export class Marker extends BaseMarker {
+export class Marker extends BaseMarker implements LabelContract {
   /**
    * Make a marker.
    *
@@ -75,7 +76,7 @@ export class Marker extends BaseMarker {
   }
 
   /**
-   * Hide the label.
+   * Hide the label marker.
    *
    * @return {this}
    */
@@ -136,7 +137,7 @@ export class Marker extends BaseMarker {
   }
 
   /**
-   * Show the marker.
+   * Show the marker label.
    *
    * @return {this}
    */

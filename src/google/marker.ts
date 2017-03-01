@@ -1,11 +1,12 @@
 import { Canvas } from './canvas'
+import { LabelContract } from '../contracts/label'
 import { Marker as BaseMarker } from '../marker'
 import { Position } from './position'
 import { CustomLabel } from './custom.js'
 
 var _ = require('underscore');
 
-export class Marker extends BaseMarker {
+export class Marker extends BaseMarker implements LabelContract {
   /**
    * Custom label instance.
    *
@@ -86,7 +87,7 @@ export class Marker extends BaseMarker {
   }
 
   /**
-   * Hide the label.
+   * Hide the marker label.
    *
    * @return {this}
    */
@@ -148,7 +149,7 @@ export class Marker extends BaseMarker {
   }
 
   /**
-   * Show the marker.
+   * Show the marker label.
    *
    * @return {this}
    */

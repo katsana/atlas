@@ -1,10 +1,11 @@
 import { Canvas } from './canvas'
 import { Icon as BaseIcon } from '../icon'
+import { LabelContract } from '../contracts/label'
 import { Marker } from './marker'
 import { Position } from './position'
 import { CustomMarker, CustomLabel } from './custom.js'
 
-export class Icon extends BaseIcon {
+export class Icon extends BaseIcon implements LabelContract {
   /**
    * Custom label instance.
    *
@@ -102,7 +103,7 @@ export class Icon extends BaseIcon {
   }
 
   /**
-   * Hide the label.
+   * Hide the marker label.
    *
    * @return {this}
    */
@@ -168,7 +169,7 @@ export class Icon extends BaseIcon {
   }
 
   /**
-   * Show the label.
+   * Show the marker label.
    *
    * @return {this}
    */

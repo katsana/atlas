@@ -94,27 +94,11 @@ export abstract class Marker {
   abstract addTo(canvas: Canvas): this;
 
   /**
-   * Add label to marker.
-   *
-   * @param  {string} text
-   * @param  {object} options
-   * @return {this}
-   */
-  abstract label(text: string, options: any): this;
-
-  /**
    * Hide the marker.
    *
    * @return {this}
    */
   abstract hide(): this;
-
-  /**
-   * Hide the label.
-   *
-   * @return {this}
-   */
-  abstract hideLabel(): this;
 
   /**
    * Move marker to position.
@@ -155,13 +139,6 @@ export abstract class Marker {
    * @return {this}
    */
   abstract show(): this;
-
-  /**
-   * Show the marker.
-   *
-   * @return {this}
-   */
-  abstract showLabel(): this;
 
   /**
    * Show popup.
