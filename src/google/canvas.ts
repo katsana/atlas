@@ -20,12 +20,18 @@ export class Canvas extends Map {
   make(id: string, options: any): void {
     let config = {
       zoom: options.zoom ? options.zoom : 7,
-      center: {lat: -34.397, lng: 150.644},
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: {lat: 3.161907, lng: 101.617954},
+      mapTypeId: options.mapTypeId ? options.mapTypeId : google.maps.MapTypeId.ROADMAP,
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+        mapTypeIds: ['roadmap', 'satellite'],
+        position: google.maps.ControlPosition.RIGHT_RIGHT
+      },
       minZoom: options.minZoom ? options.minZoom : 7
     };
 
-    return new google.maps.Map(document.getElementById(id), _.extend(config));
+    return new google.maps.Map(document.getElementById(id), config);
   }
 
   /**
