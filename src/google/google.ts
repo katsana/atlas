@@ -37,7 +37,9 @@ export class Google extends Service {
    * @return {Canvas}
    */
   newCanvas(id: string, options: any): Canvas {
-    return new Canvas(id, options);
+    let config = this.options.canvas ? this.options.canvas : {};
+
+    return new Canvas(id, _.extend(config, options));
   }
 
   /**
