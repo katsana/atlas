@@ -117,12 +117,12 @@ export class Marker extends BaseMarker implements LabelContract, PopupContract {
   /**
    * Add popup for marker.
    *
-   * @param  {string} text
+   * @param  {string} content
    * @param  {object} options
    * @return {this}
    */
-  popup(text: string, options: any): this {
-    this.instance.bindPopup(text, options);
+  popup(content: string, options: any): this {
+    this.instance.bindPopup(content, options);
 
     return this;
   }

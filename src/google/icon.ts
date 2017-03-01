@@ -15,6 +15,13 @@ export class Icon extends BaseIcon implements LabelContract, PopupContract {
   protected _label: any;
 
   /**
+   * Custom popup instance.
+   *
+   * @type {object}
+   */
+  protected _popup: any;
+
+  /**
    * Show the label status.
    *
    * @type {boolean}
@@ -172,11 +179,22 @@ export class Icon extends BaseIcon implements LabelContract, PopupContract {
   /**
    * Add popup for marker.
    *
-   * @param  {string} text
+   * @param  {string} content
    * @param  {object} options
    * @return {this}
    */
-  popup(text: string, options: any): this {
+  popup(content: string, options: any): this {
+    let marker;
+
+    this._popup = new google.maps.InfoWindow({ content });
+
+    if (this.instance instanceof Marker)
+      marker = this.instance.get();
+    else
+      marker = this.instance;
+
+    marker.addListener('click', () => this.showPopup());
+
     return this;
   }
 
@@ -187,6 +205,9 @@ export class Icon extends BaseIcon implements LabelContract, PopupContract {
    * @return {this}
    */
   setPopupContent(content: string): this {
+    if (this._popup)
+      this._popup.setContent(content);
+
     return this;
   }
 
@@ -210,6 +231,16 @@ export class Icon extends BaseIcon implements LabelContract, PopupContract {
    * @return {this}
    */
   showPopup(): this {
+    let marker;
+
+    if (this.instance instanceof Marker)
+      marker = this.instance.get();
+    else
+      marker = this.instance;
+
+    if (this._popup)
+      this._popup.open(marker.getMap(), marker);
+
     return this;
   }
 

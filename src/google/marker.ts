@@ -16,6 +16,27 @@ export class Marker extends BaseMarker implements LabelContract, PopupContract {
   protected _label: any;
 
   /**
+   * Custom popup instance.
+   *
+   * @type {object}
+   */
+  protected _popup: any;
+
+  /**
+   * Show the label status.
+   *
+   * @type {boolean}
+   */
+  protected labelShown: boolean = false;
+
+  /**
+   * Force show the label status.
+   *
+   * @type {boolean}
+   */
+  protected forceShown: boolean = false;
+
+  /**
    * Make a marker.
    *
    * @param  {object} position
@@ -116,12 +137,14 @@ export class Marker extends BaseMarker implements LabelContract, PopupContract {
   /**
    * Add popup for marker.
    *
-   * @param  {string} text
+   * @param  {string} content
    * @param  {object} options
    * @return {this}
    */
-  popup(text: string, options: any): this {
-    // this.instance.bindPopup(text, options);
+  popup(content: string, options: any): this {
+    this._popup = new google.maps.InfoWindow({ content });
+
+    this.instance.get().addListener('click', () => this.showPopup());
 
     return this;
   }
@@ -134,6 +157,18 @@ export class Marker extends BaseMarker implements LabelContract, PopupContract {
    */
   removeFrom(canvas: Canvas): this {
     this.instance.setMap(null);
+
+    return this;
+  }
+
+  /**
+   * Set popup content.
+   *
+   * @param {string} content
+   */
+  setPopupContent(content: string): this {
+    if (this._popup)
+      this._popup.setContent(content);
 
     return this;
   }
@@ -169,18 +204,10 @@ export class Marker extends BaseMarker implements LabelContract, PopupContract {
    * @return {this}
    */
   showPopup(): this {
-    // this.instance.openPopup();
+    let marker = this.instance.get();
 
-    return this;
-  }
-
-  /**
-   * Set popup content.
-   *
-   * @param {string} content
-   */
-  setPopupContent(content: string): this {
-    // this.instance.setPopupContent(content);
+    if (this._popup)
+      this._popup.open(marker.getMap(), marker);
 
     return this;
   }
