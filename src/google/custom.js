@@ -132,14 +132,26 @@ CustomMarker.prototype.setPosition = function(coordinate) {
 };
 
 
-CustomMarker.prototype.hide = function () {
+CustomMarker.prototype.hide = function() {
   this.div.style.display = 'none';
 
   return this;
 };
 
-CustomMarker.prototype.show = function () {
+CustomMarker.prototype.show = function() {
   this.div.style.display = 'block';
+
+  return this;
+};
+
+google.maps.Marker.prototype.hide = function() {
+  this.setVisible(false);
+
+  return this;
+};
+
+google.maps.Marker.prototype.show = function() {
+  this.setVisible(true);
 
   return this;
 };

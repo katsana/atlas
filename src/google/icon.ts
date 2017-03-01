@@ -57,16 +57,21 @@ export class Icon extends BaseIcon implements LabelContract, PopupContract {
    * @return {this}
    */
   createBasic(position: Position, options: any = {}) {
-    // this.icon = L.mapbox.marker.icon({
-    //   'marker-size': options.size ? options.size : 'large',
-    //   'marker-symbol': options.label ? options.label : 'car',
-    //   'marker-color': options.color ? options.color : '#fa0'
-    // });
-
-    // return this.generate(position, {
-    //   className: options.className ? options.className : null,
-    //   riseOnHover: options.riseOnHover ? options.riseOnHover : false
-    // });
+    this.instance = new google.maps.Marker({
+      label: {
+        color: 'white',
+        text: options.label ? options.label : 'car',
+      },
+      position: Position.via(position),
+      icon: {
+        labelOrigin: new google.maps.Point(0, -25),
+        path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+        fillColor: options.color ? options.color : '#fa0',
+        fillOpacity: 1,
+        strokeColor: '',
+        strokeWeight: 0
+      }
+    });
 
     return this;
   }
