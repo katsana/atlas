@@ -1,12 +1,13 @@
 import { Canvas } from './canvas'
-import { LabelContract } from '../contracts/label'
+import { LabelContract } from '../label'
 import { Marker as BaseMarker } from '../marker'
+import { PopupContract } from '../popup'
 import { Position } from './position'
 import { CustomLabel } from './custom.js'
 
 var _ = require('underscore');
 
-export class Marker extends BaseMarker implements LabelContract {
+export class Marker extends BaseMarker implements LabelContract, PopupContract {
   /**
    * Custom label instance.
    *

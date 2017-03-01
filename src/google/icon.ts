@@ -1,11 +1,12 @@
 import { Canvas } from './canvas'
 import { Icon as BaseIcon } from '../icon'
-import { LabelContract } from '../contracts/label'
+import { LabelContract } from '../label'
 import { Marker } from './marker'
+import { PopupContract } from '../popup'
 import { Position } from './position'
 import { CustomMarker, CustomLabel } from './custom.js'
 
-export class Icon extends BaseIcon implements LabelContract {
+export class Icon extends BaseIcon implements LabelContract, PopupContract {
   /**
    * Custom label instance.
    *
@@ -169,6 +170,27 @@ export class Icon extends BaseIcon implements LabelContract {
   }
 
   /**
+   * Add popup for marker.
+   *
+   * @param  {string} text
+   * @param  {object} options
+   * @return {this}
+   */
+  popup(text: string, options: any): this {
+    return this;
+  }
+
+  /**
+   * Set popup content.
+   *
+   * @param {string} content
+   * @return {this}
+   */
+  setPopupContent(content: string): this {
+    return this;
+  }
+
+  /**
    * Show the marker label.
    *
    * @return {this}
@@ -179,6 +201,15 @@ export class Icon extends BaseIcon implements LabelContract {
       this._label.show();
     }
 
+    return this;
+  }
+
+  /**
+   * Show popup.
+   *
+   * @return {this}
+   */
+  showPopup(): this {
     return this;
   }
 

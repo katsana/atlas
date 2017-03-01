@@ -21,4 +21,18 @@ export interface LabelContract {
    * @return {this}
    */
   showLabel(): this;
+
+  /**
+   * Toggle force show label.
+   *
+   * @return {this}
+   */
+  toggleForceLabel(): this;
+
+  /**
+   * Toggle show label.
+   *
+   * @return {this}
+   */
+  toggleLabel(): this;
 }

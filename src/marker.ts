@@ -10,20 +10,6 @@ export abstract class Marker {
   protected instance: any;
 
   /**
-   * Show the label status.
-   *
-   * @type {boolean}
-   */
-  protected labelShown: boolean = false;
-
-  /**
-   * Force show the label status.
-   *
-   * @type {boolean}
-   */
-  protected forceShown: boolean = false;
-
-  /**
    * Construct a new class.
    *
    * @param {Position} position
@@ -40,31 +26,6 @@ export abstract class Marker {
    */
   get(): any {
     return this.instance;
-  }
-
-  /**
-   * Toggle force show label.
-   *
-   * @return {this}
-   */
-  toggleForceLabel(): this {
-    this.forceShown = !this.forceShown;
-
-    return this;
-  }
-
-  /**
-   * Toggle show label.
-   *
-   * @return {this}
-   */
-  toggleLabel(): this {
-    if (this.labelShown)
-      this.hideLabel();
-    else
-      this.showLabel();
-
-    return this;
   }
 
   /**
@@ -109,15 +70,6 @@ export abstract class Marker {
   abstract moveTo(position: Position): this;
 
   /**
-   * Add popup for marker.
-   *
-   * @param  {string} text
-   * @param  {object} options
-   * @return {this}
-   */
-  abstract popup(text: string, options: any): this;
-
-  /**
    * Remove the marker from canvas.
    *
    * @param {Canvas} canvas
@@ -126,26 +78,11 @@ export abstract class Marker {
   abstract removeFrom(canvas: Canvas): this;
 
   /**
-   * Set popup content.
-   *
-   * @param {string} content
-   * @return {this}
-   */
-  abstract setPopupContent(content: string): this;
-
-  /**
    * Show the marker.
    *
    * @return {this}
    */
   abstract show(): this;
-
-  /**
-   * Show popup.
-   *
-   * @return {this}
-   */
-  abstract showPopup(): this;
 
   /**
    * Get position of marker.

@@ -1,12 +1,27 @@
 import { Canvas } from './canvas'
-import { LabelContract } from '../contracts/label'
+import { LabelContract } from '../label'
 import { Marker as BaseMarker } from '../marker'
+import { PopupContract } from '../popup'
 import { Position } from './position'
 
 var L = require('mapbox.js');
 var _ = require('underscore');
 
-export class Marker extends BaseMarker implements LabelContract {
+export class Marker extends BaseMarker implements LabelContract, PopupContract {
+  /**
+   * Show the label status.
+   *
+   * @type {boolean}
+   */
+  protected labelShown: boolean = false;
+
+  /**
+   * Force show the label status.
+   *
+   * @type {boolean}
+   */
+  protected forceShown: boolean = false;
+
   /**
    * Make a marker.
    *
@@ -166,6 +181,31 @@ export class Marker extends BaseMarker implements LabelContract {
    */
   setPopupContent(content: string): this {
     this.instance.setPopupContent(content);
+
+    return this;
+  }
+
+  /**
+   * Toggle force show label.
+   *
+   * @return {this}
+   */
+  toggleForceLabel(): this {
+    this.forceShown = !this.forceShown;
+
+    return this;
+  }
+
+  /**
+   * Toggle show label.
+   *
+   * @return {this}
+   */
+  toggleLabel(): this {
+    if (this.labelShown)
+      this.hideLabel();
+    else
+      this.showLabel();
 
     return this;
   }
