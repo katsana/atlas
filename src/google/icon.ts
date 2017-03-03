@@ -57,20 +57,29 @@ export class Icon extends BaseIcon implements LabelContract, PopupContract {
    * @return {this}
    */
   createBasic(position: Position, options: any = {}) {
+    let label = {
+      color: 'white',
+      text: '!'
+    }
+
+    if (_.isObject(options.label))
+      label = _.extend(label, options.label);
+    else
+      label = _.extend(label, { text: options.label })
+
+    let icon = _.extend({
+      labelOrigin: new google.maps.Point(0, -25),
+      path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+      fillColor: options.color ? options.color : '#fa0',
+      fillOpacity: 1,
+      strokeColor: '',
+      strokeWeight: 0
+    }, options.icon ? options.icon : {});
+
     this.instance = new google.maps.Marker({
-      label: {
-        color: 'white',
-        text: options.label ? options.label : 'car',
-      },
+      label,
       position: Position.via(position),
-      icon: {
-        labelOrigin: new google.maps.Point(0, -25),
-        path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
-        fillColor: options.color ? options.color : '#fa0',
-        fillOpacity: 1,
-        strokeColor: '',
-        strokeWeight: 0
-      }
+      icon
     });
 
     return this;
