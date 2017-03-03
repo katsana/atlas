@@ -18,11 +18,10 @@ export class Canvas extends Map {
    *
    * @param {string} id
    * @param {object} options
-   * @param {Theme} theme
    */
-  constructor(id: string, options: any = {}, theme: Theme) {
+  constructor(id: string, options: any = {}) {
     super(id, options);
-    this.theme(theme);
+    this.theme(options.theme);
   }
 
   /**
@@ -32,12 +31,14 @@ export class Canvas extends Map {
    * @param {object} options
    */
   make(id: string, options: any = {}): void {
+    let atlas = options.atlas ? options.atlas : {};
+
     let config = {
-      center: options.position ? Position.via(options.position) : null,
-      attributionControl: options.attributionControl ? options.attributionControl : false,
-      minZoom: options.minZoom ? options.minZoom : 7,
+      center: atlas.position ? Position.via(atlas.position) : null,
+      attributionControl: atlas.attributionControl ? atlas.attributionControl : false,
+      minZoom: atlas.minZoom ? atlas.minZoom : 7,
       trackResize: true,
-      zoom: options.zoom ? options.zoom : 7,
+      zoom: atlas.zoom ? atlas.zoom : 7,
       zoomControl: false
     };
 

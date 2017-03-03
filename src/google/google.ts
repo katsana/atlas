@@ -36,10 +36,10 @@ export class Google extends Service {
    * @param  {object} options
    * @return {Canvas}
    */
-  newCanvas(id: string, options: any): Canvas {
+  newCanvas(id: string, options: any = {}): Canvas {
     let config = this.options.canvas ? this.options.canvas : {};
 
-    return new Canvas(id, _.extend(config, options));
+    return new Canvas(id, { canvas: config, atlas: options });
   }
 
   /**

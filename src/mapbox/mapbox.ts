@@ -57,7 +57,7 @@ export class Mapbox extends Service {
    * @return {Canvas}
    */
   newCanvas(id: string, options: any): Canvas {
-    return new Canvas(id, options, this.theme);
+    return new Canvas(id, { atlas: options, theme: this.theme });
   }
 
   /**
