@@ -141,10 +141,13 @@ export class Marker extends BaseMarker implements LabelContract, PopupContract {
    * @param  {object} options
    * @return {this}
    */
-  popup(content: string, options: any): this {
+  popup(content: string, options: any = {}): this {
     this._popup = new google.maps.InfoWindow({ content });
 
     this.instance.get().addListener('click', () => this.showPopup());
+
+    if (options.showPopup == true)
+      this.showPopup();
 
     return this;
   }
