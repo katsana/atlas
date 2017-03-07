@@ -34,7 +34,6 @@ CustomLabel.prototype.onAdd = function() {
 CustomLabel.prototype.setPosition = function(coordinate) {
   var point;
 
-
   if (this.get('marker').getProjection != undefined) {
     point = this.get('marker').getProjection().fromLatLngToDivPixel(coordinate);
   } else if (this.getProjection != undefined) {

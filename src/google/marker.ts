@@ -131,6 +131,9 @@ export class Marker extends BaseMarker implements LabelContract, PopupContract {
   moveTo(position: Position): this {
     this.instance.setPosition(Position.via(position));
 
+    if (this._label)
+      this._label.setPosition(Position.via(position));
+
     return this;
   }
 

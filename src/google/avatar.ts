@@ -123,6 +123,19 @@ export class Avatar extends BaseAvatar implements LabelContract, PopupContract {
   }
 
   /**
+   * Move icon to position.
+   *
+   * @param  {Position} position
+   * @return {this}
+   */
+  moveTo(position: Position): this {
+    if (this._label)
+      this._label.setPosition(Position.via(position));
+
+    return super.moveTo(position);
+  }
+
+  /**
    * Add popup for marker.
    *
    * @param  {string} content
