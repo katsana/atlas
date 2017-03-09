@@ -32,15 +32,18 @@ CustomLabel.prototype.onAdd = function() {
 };
 
 CustomLabel.prototype.setPosition = function(coordinate) {
-  var point;
+  var point, projection;
 
-  if (this.get('marker').getProjection != undefined) {
-    point = this.get('marker').getProjection().fromLatLngToDivPixel(coordinate);
-  } else if (this.getProjection != undefined) {
-    point = this.getProjection().fromLatLngToDivPixel(coordinate);
-  } else {
-    return ;
+  projection = this.get('marker').getProjection();
+
+  if (projection == undefined) {
+    projection = this.getProjection();
+
+    if (projection == undefined)
+      return;
   }
+
+  point = projection.fromLatLngToDivPixel(coordinate);
 
   if (point && this.span != null) {
     this.span.style.left = point.x + 'px';
