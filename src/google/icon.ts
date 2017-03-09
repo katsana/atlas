@@ -222,6 +222,9 @@ export class Icon extends BaseIcon implements LabelContract, PopupContract {
 
     marker.addListener('click', () => this.showPopup());
 
+    if (options.showPopup == true)
+      this.showPopup();
+
     return this;
   }
 

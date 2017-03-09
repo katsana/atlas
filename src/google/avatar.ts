@@ -147,6 +147,9 @@ export class Avatar extends BaseAvatar implements LabelContract, PopupContract {
 
     this.instance.addListener('click', () => this.showPopup());
 
+    if (options.showPopup == true)
+      this.showPopup();
+
     return this;
   }
 
