@@ -34,12 +34,13 @@ CustomLabel.prototype.onAdd = function() {
 CustomLabel.prototype.setPosition = function(coordinate) {
   var point, projection;
 
-  projection = this.get('marker').getProjection();
+  if (_.isFunction(this.get('marker').getProjection))
+    projection = this.get('marker').getProjection();
 
-  if (projection == undefined) {
+  if (projection == undefined || projection == null) {
     projection = this.getProjection();
 
-    if (projection == undefined)
+    if (projection == undefined || projection == null)
       return;
   }
 
