@@ -9,7 +9,7 @@
   "dependencies": {
     "mapbox.js": "^2.3.0",
     "store2": "^2.5.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.12.1"
   },
   "devDependencies": {
     "babel-plugin-transform-object-assign": "^6.8.0",
